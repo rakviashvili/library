@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>თბილისის თავისუფლების ბიბლიოთეკა</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:wght@300;400;500&family=Fira+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #faf8f4; --surface: #f2ede4; --surface2: #ece5d8;
+      --text: #1a1a18; --muted: #6b6860;
+      --border: rgba(26,26,24,0.13); --border-strong: rgba(26,26,24,0.28);
+      --green: #639922; --blue: #185FA5; --gray: #888780; --gold: #b8860b;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Fira Sans', sans-serif; font-weight: 300; line-height: 1.6; }
+
+    /* LAYOUT */
+    .site { max-width: 780px; margin: 0 auto; padding: 0 1.5rem 4rem; }
+
+    /* HEADER */
+    .site-header { position: sticky; top: 0; z-index: 100; background: rgba(250,248,244,0.96); backdrop-filter: blur(8px); border-bottom: 0.5px solid var(--border); padding: 0 1.5rem; }
+    .header-inner { max-width: 780px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 1rem; }
+    .site-logo { display: flex; align-items: center; gap: 10px; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 17px; color: var(--text); text-decoration: none; flex-shrink: 0; }
+    .site-logo em { font-style: normal; }
+    nav { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+    nav a { font-size: 12.5px; color: var(--muted); text-decoration: none; letter-spacing: 0.04em; white-space: nowrap; transition: color 0.15s; }
+    nav a:hover, nav a.active { color: var(--text); }
+    nav a.active { border-bottom: 1px solid var(--text); }
+
+    /* HERO */
+    .hero { padding: 2.5rem 0 2rem; margin-bottom: 2.5rem; }
+    .hero h1 { font-family: 'EB Garamond', serif; font-size: clamp(26px, 5vw, 44px); font-weight: 400; line-height: 1.2; margin-bottom: 1.75rem; }
+    .mission { font-family: 'EB Garamond', serif; font-size: 17px; line-height: 1.9; color: var(--muted); max-width: 600px; border-left: 2px solid var(--border-strong); padding-left: 1.25rem; margin-bottom: 1.5rem; }
+    .stats-row { display: flex; gap: 0; margin-bottom: 1.5rem; border: 0.5px solid var(--border); border-radius: 4px; overflow: hidden; flex-wrap: wrap; }
+    .stat { flex: 1; min-width: 120px; padding: 0.65rem 1rem; background: var(--surface); border-right: 0.5px solid var(--border); }
+    .stat:last-child { border-right: none; }
+    .stat-num { font-family: 'EB Garamond', serif; font-size: 28px; font-weight: 500; line-height: 1; }
+    .stat-label { font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+    /* BUTTONS */
+    .btn-primary { display: inline-block; padding: 11px 24px; background: var(--text); color: var(--bg); font-family: 'Fira Sans', sans-serif; font-size: 12.5px; letter-spacing: 0.06em; text-decoration: none; border-radius: 2px; cursor: pointer; border: none; transition: opacity 0.15s; }
+    .btn-primary:hover { opacity: 0.82; }
+
+    /* SECTIONS */
+    section { margin-bottom: 2.5rem; scroll-margin-top: 72px; }
+    section:last-of-type { margin-bottom: 0; }
+    .section-label { font-family: 'Cormorant Garamond', serif; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.85rem; padding-bottom: 0.4rem; border-bottom: 0.5px solid var(--border); }
+
+    /* PROJECT LIST */
+    .project-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 0.5px solid var(--border); border-radius: 3px; overflow: hidden; }
+    .project-item { display: flex; align-items: center; gap: 1rem; padding: 0.75rem 1.25rem; background: var(--bg); transition: background 0.12s; cursor: pointer; }
+    .project-item:hover { background: var(--surface); }
+    .status-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .s-active { background: var(--green); }
+    .proj-info { flex: 1; min-width: 0; }
+    .proj-name { font-family: 'EB Garamond', serif; font-size: 17px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .proj-meta { display: flex; gap: 8px; align-items: center; margin-top: 3px; flex-wrap: wrap; }
+    .proj-author { font-size: 12px; color: var(--muted); }
+    .progress-wrap { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .bar-bg { width: 72px; height: 4px; background: var(--surface2); border-radius: 2px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 2px; background: var(--green); }
+    .pct { font-family: 'EB Garamond', serif; font-size: 15px; color: var(--muted); min-width: 36px; text-align: right; }
+
+    /* BOOKS GRID */
+    .books-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); max-width: 400px; gap: 1px; background: var(--border); border: 0.5px solid var(--border); border-radius: 3px; overflow: hidden; }
+    .book-card { background: var(--bg); padding: 1.25rem; cursor: pointer; transition: background 0.12s; }
+    .book-card:hover { background: var(--surface); }
+    .book-cover { width: 100%; aspect-ratio: 3/4; background: var(--surface2); border-radius: 2px; margin-bottom: 10px; overflow: hidden; }
+    .book-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .book-title { font-family: 'EB Garamond', serif; font-size: 16px; font-weight: 500; line-height: 1.3; margin-bottom: 4px; }
+    .book-author { font-size: 11.5px; color: var(--muted); margin-bottom: 6px; }
+    .book-badge { display: inline-flex; align-items: center; gap: 4px; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--blue); }
+
+    /* PLANNED BOOKS */
+    .todo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1px; background: var(--border); border: 0.5px solid var(--border); border-radius: 3px; overflow: hidden; }
+    .todo-item { padding: 0.5rem 0.65rem; background: var(--bg); transition: background 0.12s; }
+    .todo-item:hover { background: var(--surface); }
+    .todo-name { font-family: 'EB Garamond', serif; font-size: 13px; font-weight: 500; line-height: 1.3; }
+    .todo-author { font-size: 10px; color: var(--muted); margin-top: 2px; }
+    .todo-hidden { display: none; }
+    .btn-see-more { background: var(--bg); border: none; padding: 0.5rem 0.65rem; font-size: 12px; color: var(--muted); cursor: pointer; letter-spacing: 0.04em; transition: background 0.12s; text-align: left; }
+    .btn-see-more:hover { background: var(--surface); color: var(--text); }
+
+    /* DONATE */
+    .donate-card { border: 0.5px solid var(--border); border-radius: 8px; padding: 1.25rem; background: var(--surface); }
+    .donate-intro { font-family: 'EB Garamond', serif; font-size: 19px; line-height: 1.75; margin-bottom: 0.75rem; }
+    .amount-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 1.25rem; }
+    .amount-btn { padding: 10px 8px; background: var(--bg); border: 0.5px solid var(--border); font-family: 'EB Garamond', serif; font-size: 18px; color: var(--text); cursor: pointer; border-radius: 2px; text-align: center; transition: border-color 0.15s; }
+    .amount-btn.active, .amount-btn:hover { border: 1px solid var(--border-strong); }
+    /* EVENTS */
+    .events-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 0.5px solid var(--border); border-radius: 3px; overflow: hidden; }
+    .event-item { display: flex; gap: 1.25rem; padding: 0.85rem 1.25rem; background: var(--bg); transition: background 0.12s; align-items: center; }
+    .event-item:hover { background: var(--surface); }
+    .event-date { flex-shrink: 0; width: 48px; text-align: center; font-family: 'EB Garamond', serif; }
+    .event-day { font-size: 26px; font-weight: 500; line-height: 1; }
+    .event-mon { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+    .event-info { flex: 1; }
+    .event-title { font-family: 'EB Garamond', serif; font-size: 17px; font-weight: 500; margin-bottom: 3px; }
+    .event-desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
+    .event-thumb { flex-shrink: 0; width: 80px; height: 54px; border-radius: 3px; overflow: hidden; background: var(--surface2); }
+    .event-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* FOOTER */
+    .site-footer { border-top: 0.5px solid var(--border); padding: 1.5rem 1.5rem; margin: 0 -1.5rem; }
+    .footer-sponsors { max-width: 780px; margin: 0 auto; }
+    .footer-sponsors-row { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
+    .sponsor-logo { display: flex; align-items: center; justify-content: center; width: 60px; height: 60px; border-radius: 50%; overflow: hidden; }
+    .sponsor-logo img { width: 100%; height: 100%; object-fit: cover; }
+    .footer-bottom { max-width: 780px; margin: 1.5rem auto 0; padding-top: 1.25rem; border-top: 0.5px solid var(--border); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; font-size: 12px; color: var(--muted); }
+    .footer-bottom a { color: var(--muted); text-decoration: none; }
+    .footer-bottom a:hover { color: var(--text); }
+
+    /* MODAL */
+    .modal-overlay { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(26,26,24,0.55); backdrop-filter: blur(4px); align-items: center; justify-content: center; padding: 1.5rem; }
+    .modal-overlay.open { display: flex; }
+    .modal { background: var(--bg); border: 0.5px solid var(--border); border-radius: 8px; max-width: 540px; width: 100%; max-height: 85vh; overflow-y: auto; padding: 2.5rem; }
+    .modal-close { float: right; background: none; border: none; cursor: pointer; font-size: 20px; color: var(--muted); line-height: 1; margin-left: 1rem; }
+    .modal-close:hover { color: var(--text); }
+    .modal h2 { font-family: 'EB Garamond', serif; font-size: 24px; font-weight: 500; margin-bottom: 4px; line-height: 1.3; }
+    .modal-author { font-size: 13px; color: var(--muted); margin-bottom: 1.5rem; }
+    .modal-section-title { font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 1.25rem 0 0.5rem; }
+    .modal p { font-family: 'EB Garamond', serif; font-size: 16px; line-height: 1.8; color: var(--muted); }
+    .modal-team { display: flex; flex-direction: column; gap: 6px; }
+    .modal-team-row { display: flex; justify-content: space-between; font-size: 13px; }
+    .modal-team-role { color: var(--muted); }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      .amount-row { grid-template-columns: repeat(2, 1fr); }
+      .stat { border-right: none; border-bottom: 0.5px solid var(--border); }
+      .stat:last-child { border-bottom: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="site-logo" href="#">
+      <svg width="30" height="30" viewBox="0 0 36 36" fill="none">
+        <g transform="translate(18,17)">
+          <path d="M0,-13 C-4,-13.5 -13,-12.5 -19,-11 L-19,11 C-13,10 -4,9.5 0,10 Z" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/>
+          <path d="M0,-13 C4,-13.5 13,-12.5 19,-11 L19,11 C13,10 4,9.5 0,10 Z" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/>
+          <line x1="0" y1="-13" x2="0" y2="10" stroke="currentColor" stroke-width="1.1"/>
+          <line x1="-16" y1="-5" x2="-2" y2="-5.5" stroke="currentColor" stroke-width="0.7" stroke-linecap="round"/>
+          <line x1="-16" y1="0" x2="-2" y2="-0.5" stroke="currentColor" stroke-width="0.7" stroke-linecap="round"/>
+          <line x1="-16" y1="5" x2="-2" y2="4.5" stroke="currentColor" stroke-width="0.7" stroke-linecap="round"/>
+          <line x1="2" y1="-5.5" x2="16" y2="-5" stroke="currentColor" stroke-width="0.7" stroke-linecap="round"/>
+          <line x1="2" y1="-0.5" x2="16" y2="0" stroke="currentColor" stroke-width="0.7" stroke-linecap="round"/>
+          <line x1="2" y1="4.5" x2="16" y2="5" stroke="currentColor" stroke-width="0.7" stroke-linecap="round"/>
+          <circle cx="0" cy="15" r="1.5" fill="currentColor"/>
+          <line x1="-6" y1="15" x2="-3" y2="15" stroke="currentColor" stroke-width="0.8" stroke-linecap="round"/>
+          <line x1="3" y1="15" x2="6" y2="15" stroke="currentColor" stroke-width="0.8" stroke-linecap="round"/>
+        </g>
+      </svg>
+      თბილისის თავისუფლების ბიბლიოთეკა
+    </a>
+    <nav>
+      <a href="#" onclick="openAbout(); return false;">ჩვენს შესახებ</a>
+    </nav>
+  </div>
+</header>
+
+<div class="site">
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1></h1>
+    <p class="mission"></p>
+    <div class="stats-row">
+      <div class="stat"><div class="stat-num">4</div><div class="stat-label">მიმდინარე</div></div>
+      <div class="stat"><div class="stat-num">2</div><div class="stat-label">დასრულებული</div></div>
+      <div class="stat"><div class="stat-num">45</div><div class="stat-label">დაგეგმილი</div></div>
+      <div class="stat"><div class="stat-num">3</div><div class="stat-label">პარტნიორი</div></div>
+    </div>
+
+  </section>
+
+  <!-- ACTIVE PROJECTS -->
+  <section id="projects">
+    <p class="section-label">მიმდინარე თარგმანები</p>
+    <div class="project-list">
+      <div class="project-item" onclick="openBook('leeson')">
+        <div class="status-dot s-active"></div>
+        <div class="proj-info">
+          <div class="proj-name">The Invisible Hook: The Hidden Economics of Pirates</div>
+          <div class="proj-meta"><span class="proj-author">Peter T. Leeson</span></div>
+        </div>
+        <div class="progress-wrap"><div class="bar-bg"><div class="bar-fill" style="width:1%"></div></div><span class="pct">1%</span></div>
+      </div>
+      <div class="project-item" onclick="openBook('oppenheimer')">
+        <div class="status-dot s-active"></div>
+        <div class="proj-info">
+          <div class="proj-name">The State</div>
+          <div class="proj-meta"><span class="proj-author">Franz Oppenheimer</span></div>
+        </div>
+        <div class="progress-wrap"><div class="bar-bg"><div class="bar-fill" style="width:2%"></div></div><span class="pct">2%</span></div>
+      </div>
+      <div class="project-item" onclick="openBook('white')">
+        <div class="status-dot s-active"></div>
+        <div class="proj-info">
+          <div class="proj-name">Better Money</div>
+          <div class="proj-meta"><span class="proj-author">Lawrence H. White</span></div>
+        </div>
+      </div>
+      <div class="project-item" onclick="openBook('nozick')">
+        <div class="status-dot s-active"></div>
+        <div class="proj-info">
+          <div class="proj-name">Anarchy, State, and Utopia</div>
+          <div class="proj-meta"><span class="proj-author">Robert Nozick</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPLETED BOOKS -->
+  <section id="translated">
+    <p class="section-label">გადათარგმნილი წიგნები</p>
+    <div class="books-grid" id="books-grid"></div>
+  </section>
+
+  <!-- PLANNED BOOKS -->
+  <section id="planned">
+    <p class="section-label">დაგეგმილი წიგნები (45)</p>
+    <div class="todo-grid">
+      <div class="todo-item"><div class="todo-name">On Revolution</div><div class="todo-author">Hannah Arendt</div></div>
+      <div class="todo-item"><div class="todo-name">Antitrust and Monopoly: Anatomy of a Policy Failure</div><div class="todo-author">Dominick T. Armentano</div></div>
+      <div class="todo-item"><div class="todo-name">Economics in One Lesson</div><div class="todo-author">Henry Hazlitt</div></div>
+      <div class="todo-item"><div class="todo-name">The Morality of Law</div><div class="todo-author">Lon L. Fuller</div></div>
+      <div class="todo-item todo-hidden"><div class="todo-name">The Rise and Decline of the State</div><div class="todo-author">Martin van Creveld</div></div>
+      <div class="todo-item todo-hidden"><div class="todo-name">The Noblest Triumph: Property and Prosperity Through the Ages</div><div class="todo-author">Tom Bethell</div></div>
+      <div class="todo-item todo-hidden"><div class="todo-name">Bureaucracy</div><div class="todo-author">Ludwig von Mises</div></div>
+      <div class="todo-item todo-hidden"><div class="todo-name">On Violence</div><div class="todo-author">Hannah Arendt</div></div>
+      <div class="todo-item todo-hidden"><div class="todo-name">Freedom and the Law</div><div class="todo-author">Bruno Leoni</div></div>
+      <div class="todo-item todo-hidden"><div class="todo-name">Theory and History</div><div class="todo-author">Ludwig von Mises</div></div>
+      <div class="todo-item todo-hidden"><div class="todo-name">On Power: The Natural History of Its Growth</div><div class="todo-author">Bertrand de Jouvenel</div></div>
+      <div class="todo-item todo-hidden"><div class="todo-name">The Anti-Capitalistic Mentality</div><div class="todo-author">Ludwig von Mises</div></div>
+      <div class="todo-item todo-hidden"><div class="todo-name">The Methodology of Economics: Or, How Economists Explain</div><div class="todo-author">Mark Blaug</div></div>
+      <div class="todo-item todo-hidden"><div class="todo-name">America's Great Depression</div><div class="todo-author">Murray N. Rothbard</div></div>
+      <div class="todo-item todo-hidden"><div class="todo-name">The Bonobo and the Atheist: In Search of Humanism Among the Primates</div><div class="todo-author">Frans de Waal</div></div>
+      <div class="todo-item todo-hidden"><div class="todo-name">Seeing Like a State: How Certain Schemes to Improve the Human Condition Have Failed</div><div class="todo-author">James C. Scott</div></div>
+      <div class="todo-item todo-hidden"><div class="todo-name">The Fatal Conceit: The Errors of Socialism</div><div class="todo-author">Friedrich A. Hayek</div></div>
+      <div class="todo-item todo-hidden"><div class="todo-name">Chimpanzee Politics: Power and Sex among Apes</div><div class="todo-author">Frans de Waal</div></div>
+      <div class="todo-item todo-hidden"><div class="todo-name">Law, Legislation, and Liberty</div><div class="todo-author">Friedrich A. Hayek</div></div>
+      <div class="todo-item todo-hidden"><div class="todo-name">Transformation of War</div><div class="todo-author">Martin van Creveld</div></div>
+      <div class="todo-item todo-hidden"><div class="todo-name">The Philosophy of the Austrian School</div><div class="todo-author">Raimondo Cubeddu</div></div>
+      <div class="todo-item todo-hidden"><div class="todo-name">Capitalism and Freedom</div><div class="todo-author">Milton Friedman</div></div>
+      <div class="todo-item todo-hidden"><div class="todo-name">Man, Economy, and State</div><div class="todo-author">Murray N. Rothbard</div></div>
+      <div class="todo-item todo-hidden"><div class="todo-name">Money, Bank Credit, and Economic Cycles</div><div class="todo-author">Jesus Huerta de Soto</div></div>
+      <div class="todo-item todo-hidden"><div class="todo-name">Crisis and Leviathan</div><div class="todo-author">Robert Higgs</div></div>
+      <div class="todo-item todo-hidden"><div class="todo-name">The Liberal Archipelago: A Theory of Diversity and Freedom</div><div class="todo-author">Chandran Kukathas</div></div>
+      <div class="todo-item todo-hidden"><div class="todo-name">Anarchy, State And Public Choice</div><div class="todo-author">Edward Stringham</div></div>
+      <div class="todo-item todo-hidden"><div class="todo-name">Reinventing Civil Society: The Rediscovery of Welfare Without Politics</div><div class="todo-author">David G. Green</div></div>
+      <div class="todo-item todo-hidden"><div class="todo-name">Lessons for the Young Economist</div><div class="todo-author">Robert P. Murphy</div></div>
+      <div class="todo-item todo-hidden"><div class="todo-name">The Myth of the Rational Voter: Why Democracies Choose Bad Policies</div><div class="todo-author">Bryan Caplan</div></div>
+      <div class="todo-item todo-hidden"><div class="todo-name">For a New Liberty: The Libertarian Manifesto</div><div class="todo-author">Murray N. Rothbard</div></div>
+      <div class="todo-item todo-hidden"><div class="todo-name">Capitalism and the Historians</div><div class="todo-author">Friedrich A. Hayek</div></div>
+      <div class="todo-item todo-hidden"><div class="todo-name">The King's Two Bodies: A Study in Medieval Political Theology</div><div class="todo-author">Ernst Kantorowicz</div></div>
+      <div class="todo-item todo-hidden"><div class="todo-name">Human Action</div><div class="todo-author">Ludwig von Mises</div></div>
+      <div class="todo-item todo-hidden"><div class="todo-name">A History of Money and Banking in the United States: The Colonial Era to World War II</div><div class="todo-author">Murray N. Rothbard</div></div>
+      <div class="todo-item todo-hidden"><div class="todo-name">The Ethics of Liberty</div><div class="todo-author">Murray N. Rothbard</div></div>
+      <div class="todo-item todo-hidden"><div class="todo-name">An Austrian Perspective on the History of Economic Thought. 1</div><div class="todo-author">Murray N. Rothbard</div></div>
+      <div class="todo-item todo-hidden"><div class="todo-name">An Austrian Perspective on the History of Economic Thought. 2</div><div class="todo-author">Murray N. Rothbard</div></div>
+      <div class="todo-item todo-hidden"><div class="todo-name">The Austrian School: Market Order and Entrepreneurial Creativity</div><div class="todo-author">Jesus Huerta de Soto</div></div>
+      <div class="todo-item todo-hidden"><div class="todo-name">Competition and Entrepreneurship</div><div class="todo-author">Israel M. Kirzner</div></div>
+      <div class="todo-item todo-hidden"><div class="todo-name">Contemporary Political Philosophy: An Introduction</div><div class="todo-author">Will Kymlicka</div></div>
+      <div class="todo-item todo-hidden"><div class="todo-name">For Good and Evil: The Impact of Taxes on the Course of Civilization</div><div class="todo-author">Charles Adams</div></div>
+      <div class="todo-item todo-hidden"><div class="todo-name">The Ultimate Resource 2</div><div class="todo-author">Julian Lincoln Simon</div></div>
+      <div class="todo-item todo-hidden"><div class="todo-name">History of Economic Analysis</div><div class="todo-author">Joseph A. Schumpeter</div></div>
+      <div class="todo-item todo-hidden"><div class="todo-name">The Rhetoric of Economics (Rhetoric of the Human Sciences)</div><div class="todo-author">Deirdre N. McCloskey</div></div>
+      <button class="btn-see-more" onclick="showAllPlanned(this)">see more</button>
+    </div>
+  </section>
+
+  <!-- DONATE -->
+  <section id="donate">
+    <p class="section-label">მხარდაჭერა</p>
+    <div class="donate-card">
+      <p class="donate-intro" id="donate-intro"></p>
+      <div class="amount-row">
+        <button class="amount-btn active" onclick="setAmount(this)">₾20</button>
+        <button class="amount-btn" onclick="setAmount(this)">₾50</button>
+        <button class="amount-btn" onclick="setAmount(this)">₾100</button>
+        <button class="amount-btn" onclick="setAmount(this)">სხვა</button>
+      </div>
+<a href="https://www.paypal.com/donate/?business=rakviashvili%40gmail.com&currency_code=USD" target="_blank" class="btn-primary">შემოწირულება →</a>
+    </div>
+  </section>
+
+  <!-- EVENTS -->
+  <section id="events">
+    <p class="section-label">ღონისძიებები და კონფერენციები</p>
+    <div class="events-list" id="events-grid"></div>
+  </section>
+
+
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-sponsors">
+    <div class="footer-sponsors-row" id="footer-partners"></div>
+  </div>
+  <div class="footer-bottom">
+    <a href="mailto:rakviashvili@gmail.com">rakviashvili@gmail.com</a>
+  </div>
+</footer>
+
+<!-- ABOUT MODAL -->
+<div class="modal-overlay" id="about-overlay" onclick="if(event.target===this)closeAbout()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeAbout()">✕</button>
+    <h2>ჩვენს შესახებ</h2>
+    <p id="about-text" style="font-size:15px;line-height:1.8;margin-top:1rem;"></p>
+    <div style="margin-top:1.5rem;font-size:13px;color:var(--muted);">
+      <a href="mailto:rakviashvili@gmail.com" style="color:var(--muted);">rakviashvili@gmail.com</a>
+    </div>
+  </div>
+</div>
+
+<!-- BOOK MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal" id="modal-box">
+    <button class="modal-close" onclick="closeBookModal()">✕</button>
+    <h2 id="modal-title"></h2>
+    <div class="modal-author" id="modal-author"></div>
+    <div class="modal-section-title">ანოტაცია</div>
+    <p id="modal-annotation"></p>
+    <div class="modal-section-title">თარგმანის სტატუსი</div>
+    <p id="modal-status"></p>
+    <div class="modal-section-title">გუნდი</div>
+    <div class="modal-team" id="modal-team"></div>
+  </div>
+</div>
+
+<script>
+const books = {
+  leeson: {
+    title: "The Invisible Hook: The Hidden Economics of Pirates",
+    author: "Peter T. Leeson",
+    annotation: "ლისონი იკვლევს, თუ როგორ ქმნიან ბაზრები წესრიგს სახელმწიფო ინსტიტუტების გარეშეც. წიგნი იყენებს მეკობრეების და სხვა 'კანონგარეშე' ჯგუფების მაგალითებს.",
+    status: "მიმდინარე — 1% დასრულებულია.",
+    team: [{role:"მთარგმნელი",name:"ანინა ტეფნაძე"},{role:"რედაქტორი",name:"ჰერმან საბო"}]
+  },
+  oppenheimer: {
+    title: "The State",
+    author: "Franz Oppenheimer",
+    annotation: "ოპენჰეიმერი განასხვავებს ეკონომიკურ და პოლიტიკურ საშუალებებს სიმდიდრის მოპოვებისთვის და ამტკიცებს, რომ სახელმწიფო ძალდობრივი დაპყრობის შედეგია.",
+    status: "მიმდინარე — 2% დასრულებულია.",
+    team: [{role:"მთარგმნელი",name:"ელენე კობახიძე"},{role:"რედაქტორი",name:"სანდრო რაქვიაშვილი"}]
+  },
+  white: {
+    title: "Better Money",
+    author: "Lawrence H. White",
+    annotation: "",
+    status: "მიმდინარე.",
+    team: []
+  },
+  nozick: {
+    title: "Anarchy, State, and Utopia",
+    author: "Robert Nozick",
+    annotation: "",
+    status: "მიმდინარე.",
+    team: []
+  },
+  block: {
+    title: "დაცვა ვერდასაცავისა",
+    author: "უოლტერ ბლოკი",
+    annotation: "ბლოკი ლიბერტარიანული ეთიკის პოზიციიდან ანალიზებს საზოგადოების სასჯელის ღირსად მიჩნეულ ადამიანთა ჯგუფებს. გახდა ლიბერტარიანული ფილოსოფიის ერთ-ერთი მნიშვნელოვანი ტექსტი.",
+    status: "დასრულებულია. ხელმისაწვდომია გირჩის ოფისში.",
+    team: [{role:"მთარგმნელი",name:"ანინა ტეფნაძე"},{role:"რედაქტორი",name:"ჰერმან საბო, სანდრო რაქვიაშვილი"}],
+    image: "b1"
+  },
+  "rothbard-anatomy": {
+    title: "სახელმწიფოს ანატომია",
+    author: "მიურეი როთბარდი",
+    annotation: "როთბარდი ანალიზებს სახელმწიფოს ბუნებას, როგორც ძალდობრივ ინსტიტუტს, რომელიც ინარჩუნებს ძალაუფლებას გადასახადების, კანონისა და იდეოლოგიური ლეგიტიმაციის მეშვეობით.",
+    status: "დასრულებულია. ხელმისაწვდომია გირჩის ოფისში.",
+    team: [{role:"მთარგმნელი",name:"ანინა ტეფნაძე"},{role:"რედაქტორი",name:"სანდრო რაქვიაშვილი"}],
+    image: "b2"
+  }
+};
+
+const bookImages = {
+  b1: "Images/b1.jpg",
+  b2: "Images/b2.jpeg"
+};
+
+function renderDoneBooks() {
+  const grid = document.getElementById('books-grid');
+  const done = Object.entries(books)
+    .filter(([, b]) => b.image)
+    .sort((a, b) => a[1].image.localeCompare(b[1].image));
+  grid.innerHTML = done.map(([id, b]) => `
+    <div class="book-card" onclick="openBook('${id}')">
+      <div class="book-cover"><img src="${bookImages[b.image]}" alt="${b.title}"/></div>
+      <div class="book-title">${b.title}</div>
+      <div class="book-author">${b.author}</div>
+      <div class="book-badge">✓ დასრულებული</div>
+    </div>`).join('');
+}
+renderDoneBooks();
+
+function openBook(id) {
+  const b = books[id]; if (!b) return;
+  document.getElementById('modal-title').textContent = b.title;
+  document.getElementById('modal-author').textContent = b.author;
+  document.getElementById('modal-annotation').textContent = b.annotation;
+  document.getElementById('modal-status').textContent = b.status;
+  document.getElementById('modal-team').innerHTML = b.team.map(t =>
+    `<div class="modal-team-row"><span>${t.name}</span><span class="modal-team-role">${t.role}</span></div>`
+  ).join('');
+  document.getElementById('modal-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeBookModal() {
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeModal(e) {
+  if (e.target === document.getElementById('modal-overlay')) closeBookModal();
+}
+
+function setAmount(el) { document.querySelectorAll('.amount-btn').forEach(b=>b.classList.remove('active')); el.classList.add('active'); }
+
+function showAllPlanned(btn) {
+  const items = document.querySelectorAll('.todo-item');
+  if (btn.dataset.expanded === '1') {
+    let count = 0;
+    items.forEach(el => { if (count >= 4) el.classList.add('todo-hidden'); count++; });
+    btn.textContent = 'see more';
+    btn.dataset.expanded = '0';
+  } else {
+    items.forEach(el => el.classList.remove('todo-hidden'));
+    btn.textContent = 'show less';
+    btn.dataset.expanded = '1';
+  }
+}
+
+
+const donationData = {
+  intro: "თქვენი შემოწირულება ფინანსავს მთარგმნელებს, რედაქტორებს და ქართული სამეცნიერო ენის გრძელვადიან განვითარებას."
+};
+document.getElementById('donate-intro').textContent = donationData.intro;
+
+const aboutData = {
+  text: "ეს არის ტექსტი ჩვენს შესახებ"
+};
+function openAbout() {
+  document.getElementById('about-text').textContent = aboutData.text;
+  document.getElementById('about-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeAbout() {
+  document.getElementById('about-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+const mainPage = {
+  name: "თბილისის თავისუფლების ბიბლიოთეკა",
+  heroText: "თბილისის თავისუფლების ბიბლიოთეკა",
+  mission: "თავისუფლების ბიბლიოთეკა არის არაკომერციული პროექტი, რომლის მიზანია ქართული მეცნიერული ენის განვითარება სოციალურ და ჰუმანიტარულ მეცნიერებებში ცნობილი ნაშრომების თარგმნის მეშვეობით. თითოეული წიგნი არა მხოლოდ ამრავლებს ქართულ ენაზე ხელმისაწვდომ ლიტერატურას, არამედ ასევე აყალიბებს ცალკეული ტერმინების თარგმანს, რომლებიც ყოველწლიურ ფილოლოგიურ კონფერენციაზე მტკიცდება."
+};
+document.title = mainPage.name;
+document.querySelector('.hero h1').textContent = mainPage.heroText;
+document.querySelector('.mission').textContent = mainPage.mission;
+
+const events = [
+  { num: 1, name: "ოპენგეიმერის წიგნის \"სახელმწიფო\" პრეზენტაცია", date: "14 ივნისი 2026", place: "საქართველოს უნივერსიტეტი, აუდიტორია 525", annotation: "წიგნის პრეზენტაცია" },
+  { num: 2, name: "ლისონის წიგნის პრეზენტაცია", date: "25 ოქტომბერი 2026", place: "საქართველოს უნივერსიტეტი, დიდი დარბაზი", annotation: "ანოტაცია 2" },
+  { num: 3, name: "ყოველწლიური ფილოლოგიური კონფერენცია 2025", date: "25 ნოემბერი 2026", place: "საქართველოს უნივერსიტეტი, აუდიტორია 525", annotation: "სამეცნიერო ტერმინოლოგიის დამტკიცება სოციალურ მეცნიერებებში. ღია სესია ყველა დაინტერესებული პირისთვის." }
+];
+const eventImages = {
+  1: "Images/e1.jpg",
+  2: "Images/e2.jpeg"
+};
+function renderEvents() {
+  document.getElementById('events-grid').innerHTML = events.map(e => {
+    const [day, ...rest] = e.date.split(' ');
+    const mon = rest[0] || '';
+    const thumbHtml = eventImages[e.num]
+      ? `<img src="${eventImages[e.num]}" alt="${e.name}"/>`
+      : '';
+    return `<div class="event-item">
+      <div class="event-thumb">${thumbHtml}</div>
+      <div class="event-date"><div class="event-day">${day}</div><div class="event-mon">${mon}</div></div>
+      <div class="event-info">
+        <div class="event-title">${e.name}</div>
+        <div class="event-desc">${e.place}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+renderEvents();
+
+const partners = [
+  { num: 1, name: "საქართველოს უნივერსიტეტი", site: "www.ug.ge" },
+  { num: 2, name: "ჯერ არავინ", site: "" },
+  { num: 3, name: "ჯერ არავინ", site: "" }
+];
+const partnerLogos = {
+  1: "Logos/PLogo _ 1.png",
+  2: "Logos/PLogo _ 2.jpg",
+  3: "Logos/PLogo _ 3.jpg"
+};
+function renderPartners() {
+  document.getElementById('footer-partners').innerHTML = partners.map(p => {
+    const href = p.site ? `https://${p.site.trim()}` : '#';
+    return `<a class="sponsor-logo" href="${href}" target="_blank"><img src="${partnerLogos[p.num]}" alt="${p.name}"/></a>`;
+  }).join('');
+}
+renderPartners();
+
+// Active nav highlight
+const secs = document.querySelectorAll('section[id]');
+const navAs = document.querySelectorAll('nav a');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  secs.forEach(s => { if (window.scrollY >= s.offsetTop - 80) cur = s.id; });
+  navAs.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#'+cur); });
+}, {passive:true});
+</script>
+</body>
+</html>
