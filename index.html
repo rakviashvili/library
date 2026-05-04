@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:wght@300;400;500&family=Fira+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    a { text-decoration: none; }
     :root {
       --bg: #faf8f4; --surface: #f2ede4; --surface2: #ece5d8;
       --text: #1a1a18; --muted: #6b6860;
@@ -27,9 +28,8 @@
     .site-logo { display: flex; align-items: center; gap: 10px; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 17px; color: var(--text); text-decoration: none; flex-shrink: 0; }
     .site-logo em { font-style: normal; }
     nav { display: flex; gap: 1.25rem; flex-wrap: wrap; }
-    nav a { font-size: 12.5px; color: var(--muted); text-decoration: none; letter-spacing: 0.04em; white-space: nowrap; transition: color 0.15s; }
-    nav a:hover, nav a.active { color: var(--text); }
-    nav a.active { border-bottom: 1px solid var(--text); }
+    nav a { font-size: 12.5px; color: var(--muted); text-decoration: none !important; letter-spacing: 0.04em; white-space: nowrap; transition: color 0.15s; }
+    nav a:hover, nav a:focus, nav a:visited, nav a:active, nav a.active { color: var(--text); text-decoration: none !important; outline: none; }
 
     /* HERO */
     .hero { padding: 2.5rem 0 2rem; margin-bottom: 2.5rem; }
