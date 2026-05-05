@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>თბილისის თავისუფლების ბიბლიოთეკა</title>
+  <title>წიგნიერება</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:wght@300;400;500&family=Fira+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -26,6 +26,8 @@
     .site-header { position: sticky; top: 0; z-index: 100; background: rgba(250,248,244,0.96); backdrop-filter: blur(8px); border-bottom: 0.5px solid var(--border); padding: 0 1.5rem; }
     .header-inner { max-width: 780px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 1rem; }
     .site-logo { display: flex; align-items: center; gap: 10px; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 17px; color: var(--text); text-decoration: none; flex-shrink: 0; }
+    .logo-titles { display: flex; flex-direction: column; gap: 1px; }
+    .logo-subtitle { font-size: 10px; color: var(--muted); letter-spacing: 0.03em; }
     .site-logo em { font-style: normal; }
     nav { display: flex; gap: 1.25rem; flex-wrap: wrap; }
     nav a { font-size: 12.5px; color: var(--muted); text-decoration: none !important; letter-spacing: 0.04em; white-space: nowrap; transition: color 0.15s; }
@@ -33,7 +35,8 @@
 
     /* HERO */
     .hero { padding: 2.5rem 0 2rem; margin-bottom: 2.5rem; }
-    .hero h1 { font-family: 'EB Garamond', serif; font-size: clamp(26px, 5vw, 44px); font-weight: 400; line-height: 1.2; margin-bottom: 1.75rem; }
+    .hero h1 { font-family: 'EB Garamond', serif; font-size: clamp(26px, 5vw, 44px); font-weight: 400; line-height: 1.2; margin-bottom: 0.4rem; }
+    .hero-subtitle { font-family: 'Fira Sans', sans-serif; font-size: 18px; font-weight: 300; color: var(--muted); margin-bottom: 1.5rem; }
     .mission { font-family: 'EB Garamond', serif; font-size: 17px; line-height: 1.9; color: var(--muted); max-width: 600px; border-left: 2px solid var(--border-strong); padding-left: 1.25rem; margin-bottom: 1.5rem; }
     .stats-row { display: flex; gap: 0; margin-bottom: 1.5rem; border: 0.5px solid var(--border); border-radius: 4px; overflow: hidden; flex-wrap: wrap; }
     .stat { flex: 1; min-width: 120px; padding: 0.65rem 1rem; background: var(--surface); border-right: 0.5px solid var(--border); }
@@ -85,11 +88,10 @@
     .btn-see-more:hover { background: var(--surface); color: var(--text); }
 
     /* DONATE */
-    .donate-card { border: 0.5px solid var(--border); border-radius: 8px; padding: 1.25rem; background: var(--surface); }
     .donate-intro { font-family: 'EB Garamond', serif; font-size: 19px; line-height: 1.75; margin-bottom: 0.75rem; }
-    .amount-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 1.25rem; }
-    .amount-btn { padding: 10px 8px; background: var(--bg); border: 0.5px solid var(--border); font-family: 'EB Garamond', serif; font-size: 18px; color: var(--text); cursor: pointer; border-radius: 2px; text-align: center; transition: border-color 0.15s; }
-    .amount-btn.active, .amount-btn:hover { border: 1px solid var(--border-strong); }
+    .donate-info { display: flex; flex-direction: column; gap: 0.6rem; }
+    .donate-row { display: flex; align-items: center; gap: 0.65rem; }
+    .donate-account { font-family: monospace; font-size: 14px; color: var(--text); }
     /* EVENTS */
     .events-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 0.5px solid var(--border); border-radius: 3px; overflow: hidden; }
     .event-item { display: flex; gap: 1.25rem; padding: 0.85rem 1.25rem; background: var(--bg); transition: background 0.12s; align-items: center; }
@@ -129,9 +131,18 @@
 
     /* RESPONSIVE */
     @media (max-width: 600px) {
-      .amount-row { grid-template-columns: repeat(2, 1fr); }
+      .site { padding: 0 1rem 3rem; }
+      .site-header { padding: 0 1rem; }
+      .logo-text { display: none; }
+      .logo-subtitle { display: none; }
+      .stats-row { flex-direction: column; }
       .stat { border-right: none; border-bottom: 0.5px solid var(--border); }
       .stat:last-child { border-bottom: none; }
+      .donate-account { font-size: 12px; word-break: break-all; }
+      .donate-row { align-items: flex-start; }
+      .event-thumb { display: none; }
+      .modal { padding: 1.25rem; }
+      .modal-overlay { padding: 0.75rem; }
     }
   </style>
 </head>
@@ -156,10 +167,12 @@
           <line x1="3" y1="15" x2="6" y2="15" stroke="currentColor" stroke-width="0.8" stroke-linecap="round"/>
         </g>
       </svg>
-      თბილისის თავისუფლების ბიბლიოთეკა
+      <div class="logo-titles">
+        <span class="logo-text">წიგნიერება</span>
+        <span class="logo-subtitle">ქართული მეცნიერული ენის განვითარების პროექტი</span>
+      </div>
     </a>
     <nav>
-      <a href="#" onclick="openAbout(); return false;">ჩვენს შესახებ</a>
     </nav>
   </div>
 </header>
@@ -169,6 +182,7 @@
   <!-- HERO -->
   <section class="hero">
     <h1></h1>
+    <p class="hero-subtitle"></p>
     <p class="mission"></p>
     <div class="stats-row">
       <div class="stat"><div class="stat-num">4</div><div class="stat-label">მიმდინარე</div></div>
@@ -278,15 +292,20 @@
   <!-- DONATE -->
   <section id="donate">
     <p class="section-label">მხარდაჭერა</p>
-    <div class="donate-card">
-      <p class="donate-intro" id="donate-intro"></p>
-      <div class="amount-row">
-        <button class="amount-btn active" onclick="setAmount(this)">₾20</button>
-        <button class="amount-btn" onclick="setAmount(this)">₾50</button>
-        <button class="amount-btn" onclick="setAmount(this)">₾100</button>
-        <button class="amount-btn" onclick="setAmount(this)">სხვა</button>
+    <p class="donate-intro">თუ გსურთ მხარი დაუჭიროთ პროექტს:</p>
+    <div class="donate-info">
+      <div class="donate-row">
+        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="20" viewBox="0 0 36 20"><rect width="36" height="20" rx="3" fill="#1A56DB"/><text x="18" y="14" font-family="Arial,sans-serif" font-size="9" font-weight="bold" fill="white" text-anchor="middle" letter-spacing="0.5">TBC</text></svg>
+        <span class="donate-account">GE44TB7038445064300044</span>
       </div>
-<a href="https://www.paypal.com/donate/?business=rakviashvili%40gmail.com&currency_code=USD" target="_blank" class="btn-primary">შემოწირულება →</a>
+      <div class="donate-row">
+        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="20" viewBox="0 0 36 20"><rect width="36" height="20" rx="3" fill="#E2231A"/><text x="18" y="14" font-family="Arial,sans-serif" font-size="9" font-weight="bold" fill="white" text-anchor="middle" letter-spacing="0.5">BOG</text></svg>
+        <span class="donate-account">GE59BG0000000740227700</span>
+      </div>
+      <div class="donate-row">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#F7931A"/><text x="10" y="15" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="white" text-anchor="middle">&#x20BF;</text></svg>
+        <span class="donate-account">bc1qtzvernqf7ee693jc5qjzec00mk3rg5zmx5hruu</span>
+      </div>
     </div>
   </section>
 
@@ -308,18 +327,6 @@
     <a href="mailto:rakviashvili@gmail.com">rakviashvili@gmail.com</a>
   </div>
 </footer>
-
-<!-- ABOUT MODAL -->
-<div class="modal-overlay" id="about-overlay" onclick="if(event.target===this)closeAbout()">
-  <div class="modal">
-    <button class="modal-close" onclick="closeAbout()">✕</button>
-    <h2>ჩვენს შესახებ</h2>
-    <p id="about-text" style="font-size:15px;line-height:1.8;margin-top:1rem;"></p>
-    <div style="margin-top:1.5rem;font-size:13px;color:var(--muted);">
-      <a href="mailto:rakviashvili@gmail.com" style="color:var(--muted);">rakviashvili@gmail.com</a>
-    </div>
-  </div>
-</div>
 
 <!-- BOOK MODAL -->
 <div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
@@ -424,7 +431,6 @@ function closeModal(e) {
   if (e.target === document.getElementById('modal-overlay')) closeBookModal();
 }
 
-function setAmount(el) { document.querySelectorAll('.amount-btn').forEach(b=>b.classList.remove('active')); el.classList.add('active'); }
 
 function showAllPlanned(btn) {
   const items = document.querySelectorAll('.todo-item');
@@ -441,44 +447,27 @@ function showAllPlanned(btn) {
 }
 
 
-const donationData = {
-  intro: "თქვენი შემოწირულება ფინანსავს მთარგმნელებს, რედაქტორებს და ქართული სამეცნიერო ენის გრძელვადიან განვითარებას."
-};
-document.getElementById('donate-intro').textContent = donationData.intro;
-
-const aboutData = {
-  text: "ეს არის ტექსტი ჩვენს შესახებ"
-};
-function openAbout() {
-  document.getElementById('about-text').textContent = aboutData.text;
-  document.getElementById('about-overlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeAbout() {
-  document.getElementById('about-overlay').classList.remove('open');
-  document.body.style.overflow = '';
-}
 
 const mainPage = {
-  name: "თბილისის თავისუფლების ბიბლიოთეკა",
-  heroText: "თბილისის თავისუფლების ბიბლიოთეკა",
-  mission: "თავისუფლების ბიბლიოთეკა არის არაკომერციული პროექტი, რომლის მიზანია ქართული მეცნიერული ენის განვითარება სოციალურ და ჰუმანიტარულ მეცნიერებებში ცნობილი ნაშრომების თარგმნის მეშვეობით. თითოეული წიგნი არა მხოლოდ ამრავლებს ქართულ ენაზე ხელმისაწვდომ ლიტერატურას, არამედ ასევე აყალიბებს ცალკეული ტერმინების თარგმანს, რომლებიც ყოველწლიურ ფილოლოგიურ კონფერენციაზე მტკიცდება."
+  name: "წიგნიერება",
+  heroText: "წიგნიერება",
+  heroSubtitle: "ქართული მეცნიერული ენის განვითარების პროექტი",
+  mission: "წიგნიერება არის ქართული მეცნიერული ენის განვითარების პროექტი, რომლის მიზანია ქართული მეცნიერული ტერმინოლოგიის ჩამოყალიბებაა. მიზნის მისაღწევად სოციალურ და ჰუმანიტარულ მეცნიერებში ცნობილი წიგნების თარგმნა ხორციელდება და ამ პროცესში საჭრო ტერმინების თარგმანი მეცნიერული კონფერეცნიის ფორმატში ფილოლოგების განხილვის ობიექტად იქცევა. ამ ტერმინების თარგმნა, განხილვა და შემდგომი პრაქტიკაში დანერგვა ქართულ მეცნიერული ენის გამდიდრებას შეუწყობს ხელს და დაეხმარება მკლევარებსა მომავალში ქართულად ჩანოაყალიბონ და განავითარონ საკუთარი იდეები, თეორიები და კონცეფციები."
 };
 document.title = mainPage.name;
 document.querySelector('.hero h1').textContent = mainPage.heroText;
+document.querySelector('.hero-subtitle').textContent = mainPage.heroSubtitle;
 document.querySelector('.mission').textContent = mainPage.mission;
 
 const events = [
-  { num: 1, name: "ოპენგეიმერის წიგნის \"სახელმწიფო\" პრეზენტაცია", date: "14 ივნისი 2026", place: "საქართველოს უნივერსიტეტი, აუდიტორია 525", annotation: "წიგნის პრეზენტაცია" },
-  { num: 2, name: "ლისონის წიგნის პრეზენტაცია", date: "25 ოქტომბერი 2026", place: "საქართველოს უნივერსიტეტი, დიდი დარბაზი", annotation: "ანოტაცია 2" },
-  { num: 3, name: "ყოველწლიური ფილოლოგიური კონფერენცია 2025", date: "25 ნოემბერი 2026", place: "საქართველოს უნივერსიტეტი, აუდიტორია 525", annotation: "სამეცნიერო ტერმინოლოგიის დამტკიცება სოციალურ მეცნიერებებში. ღია სესია ყველა დაინტერესებული პირისთვის." }
+  { num: 1, name: "პროექტის პრეზენტაცია", date: "14 ივნისი 2026", place: "საქართველოს უნივერსიტეტი, აუდიტორია 525", annotation: "წიგნის პრეზენტაცია" }
 ];
 const eventImages = {
   1: "Images/e1.jpg",
   2: "Images/e2.jpeg"
 };
 function renderEvents() {
-  document.getElementById('events-grid').innerHTML = events.map(e => {
+  document.getElementById('events-grid').innerHTML = events.filter(e => e.name && e.date && e.place).map(e => {
     const [day, ...rest] = e.date.split(' ');
     const mon = rest[0] || '';
     const thumbHtml = eventImages[e.num]
@@ -497,20 +486,22 @@ function renderEvents() {
 renderEvents();
 
 const partners = [
-  { num: 1, name: "საქართველოს უნივერსიტეტი", site: "www.ug.ge" },
-  { num: 2, name: "ჯერ არავინ", site: "" },
-  { num: 3, name: "ჯერ არავინ", site: "" }
+  { num: 1, name: "პირველი სპონსორი", site: "girchi.com" },
+  { num: 2, name: "მეორე სპონსორი", site: "www.google.com" },
+  { num: 3, name: "მესამე სპონსორი", site: "www.google.com" }
 ];
 const partnerLogos = {
-  1: "Logos/PLogo _ 1.png",
+  1: "Logos/PLogo _ 1.jpg",
   2: "Logos/PLogo _ 2.jpg",
   3: "Logos/PLogo _ 3.jpg"
 };
 function renderPartners() {
-  document.getElementById('footer-partners').innerHTML = partners.map(p => {
-    const href = p.site ? `https://${p.site.trim()}` : '#';
-    return `<a class="sponsor-logo" href="${href}" target="_blank"><img src="${partnerLogos[p.num]}" alt="${p.name}"/></a>`;
-  }).join('');
+  document.getElementById('footer-partners').innerHTML = partners
+    .filter(p => p.name)
+    .map(p => {
+      const href = p.site ? `https://${p.site.trim()}` : '#';
+      return `<a class="sponsor-logo" href="${href}" target="_blank"><img src="${partnerLogos[p.num]}" alt="${p.name}"/></a>`;
+    }).join('');
 }
 renderPartners();
 
