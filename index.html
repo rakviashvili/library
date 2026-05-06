@@ -138,20 +138,26 @@
 
     /* RESPONSIVE */
     @media (max-width: 600px) {
-      .site { padding: 0 1rem 3rem; }
-      .site-header { padding: 0 1rem; }
+      body { overflow-x: hidden; }
+      .site { padding: 0 1.25rem 3rem; }
+      .site-header { padding: 0 1.25rem; }
       .logo-text { display: none; }
       .logo-subtitle { display: none; }
-      .hero { flex-direction: column; }
-      .hero-illustration { display: none; }
       .stats-row { flex-direction: column; }
       .stat { border-right: none; border-bottom: 0.5px solid var(--border); }
       .stat:last-child { border-bottom: none; }
-      .donate-account { font-size: 12px; word-break: break-all; }
+      .proj-name { white-space: normal; }
+      .project-item { padding: 0.45rem 0.85rem; }
+      .todo-item { padding: 0.5rem 0.85rem; }
+      .book-card { padding: 0.55rem 0.85rem; }
+      .event-item { padding: 0.75rem 0.85rem; }
+      .donate-account { font-size: 11px; word-break: break-all; }
       .donate-row { align-items: flex-start; }
       .event-thumb { display: none; }
       .modal { padding: 1.25rem; }
       .modal-overlay { padding: 0.75rem; }
+      .hero-subtitle { font-size: 15px; }
+      .mission { font-size: 15px; }
     }
   </style>
 </head>
