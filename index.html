@@ -6,7 +6,7 @@
   <title>წიგნიერება</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:wght@300;400;500&family=Fira+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     a { text-decoration: none; }
@@ -17,15 +17,15 @@
       --green: #639922; --blue: #185FA5; --gray: #888780; --gold: #b8860b;
     }
     html { scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--text); font-family: 'Fira Sans', sans-serif; font-weight: 300; line-height: 1.6; }
+    body { background: var(--bg); color: var(--text); font-weight: 400; line-height: 1.6; }
 
     /* LAYOUT */
     .site { max-width: 780px; margin: 0 auto; padding: 0 1.5rem 4rem; }
 
     /* HEADER */
-    .site-header { position: sticky; top: 0; z-index: 100; background: rgba(250,248,244,0.96); backdrop-filter: blur(8px); border-bottom: 0.5px solid var(--border); padding: 0 1.5rem; }
-    .header-inner { max-width: 780px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 1rem; }
-    .site-logo { display: flex; align-items: center; gap: 10px; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 17px; color: var(--text); text-decoration: none; flex-shrink: 0; }
+    .site-header { position: sticky; top: 0; z-index: 100; background: rgba(250,248,244,0.96); backdrop-filter: blur(8px); border-bottom: 0.5px solid var(--border); }
+    .header-inner { max-width: 780px; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 1rem; }
+    .site-logo { display: flex; align-items: center; gap: 10px; font-weight: 400; font-size: 17px; color: var(--text); text-decoration: none; flex-shrink: 0; }
     .logo-titles { display: flex; flex-direction: column; gap: 1px; }
     .logo-subtitle { font-size: 10px; color: var(--muted); letter-spacing: 0.03em; }
     .site-logo em { font-style: normal; }
@@ -35,22 +35,22 @@
 
     /* HERO */
     .hero { padding: 2.5rem 0 2rem; margin-bottom: 2.5rem; }
-    .hero h1 { font-family: 'EB Garamond', serif; font-size: clamp(26px, 5vw, 44px); font-weight: 400; line-height: 1.2; margin-bottom: 0.4rem; }
-    .hero-subtitle { font-family: 'Fira Sans', sans-serif; font-size: 18px; font-weight: 300; color: var(--muted); margin-bottom: 1.5rem; }
-    .mission { font-family: 'EB Garamond', serif; font-size: 17px; line-height: 1.9; color: var(--muted); max-width: 600px; border-left: 2px solid var(--border-strong); padding-left: 1.25rem; margin-bottom: 1.5rem; }
+    .hero h1 { font-size: clamp(26px, 5vw, 44px); font-weight: 400; line-height: 1.2; margin-bottom: 0.4rem; }
+    .hero-subtitle { font-size: 18px; font-weight: 300; color: var(--muted); margin-bottom: 1.5rem; }
+    .mission { font-size: 17px; line-height: 1.9; color: var(--muted); max-width: 600px; border-left: 2px solid var(--border-strong); padding-left: 1.25rem; margin-bottom: 1.5rem; }
     .stats-row { display: flex; gap: 0; margin-bottom: 1.5rem; border: 0.5px solid var(--border); border-radius: 4px; overflow: hidden; flex-wrap: wrap; }
     .stat { flex: 1; min-width: 120px; padding: 0.65rem 1rem; background: var(--surface); border-right: 0.5px solid var(--border); }
     .stat:last-child { border-right: none; }
-    .stat-num { font-family: 'EB Garamond', serif; font-size: 28px; font-weight: 500; line-height: 1; }
+    .stat-num { font-size: 28px; font-weight: 500; line-height: 1; }
     .stat-label { font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
     /* BUTTONS */
-    .btn-primary { display: inline-block; padding: 11px 24px; background: var(--text); color: var(--bg); font-family: 'Fira Sans', sans-serif; font-size: 12.5px; letter-spacing: 0.06em; text-decoration: none; border-radius: 2px; cursor: pointer; border: none; transition: opacity 0.15s; }
+    .btn-primary { display: inline-block; padding: 11px 24px; background: var(--text); color: var(--bg); font-size: 12.5px; letter-spacing: 0.06em; text-decoration: none; border-radius: 2px; cursor: pointer; border: none; transition: opacity 0.15s; }
     .btn-primary:hover { opacity: 0.82; }
 
     /* SECTIONS */
     section { margin-bottom: 2.5rem; scroll-margin-top: 72px; }
     section:last-of-type { margin-bottom: 0; }
-    .section-label { font-family: 'Cormorant Garamond', serif; font-size: 10.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.85rem; padding-bottom: 0.4rem; border-bottom: 0.5px solid var(--border); }
+    .section-label { font-size: 10.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.85rem; padding-bottom: 0.4rem; border-bottom: 0.5px solid var(--border); }
 
     /* PROJECT LIST */
     .project-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 0.5px solid var(--border); border-radius: 3px; overflow: hidden; }
@@ -61,13 +61,13 @@
     .status-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
     .s-active { background: var(--green); }
     .proj-info { flex: 1; min-width: 0; }
-    .proj-name { font-family: 'EB Garamond', serif; font-size: 15px; font-weight: 500; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .proj-name { font-size: 15px; font-weight: 500; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .proj-meta { display: flex; gap: 8px; align-items: center; margin-top: 2px; flex-wrap: wrap; }
     .proj-author { font-size: 12px; color: var(--muted); }
     .progress-wrap { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
     .bar-bg { width: 56px; height: 3px; background: var(--surface2); border-radius: 2px; overflow: hidden; }
     .bar-fill { height: 100%; border-radius: 2px; background: var(--green); }
-    .pct { font-family: 'EB Garamond', serif; font-size: 13px; color: var(--muted); min-width: 28px; text-align: right; }
+    .pct { font-size: 13px; color: var(--muted); min-width: 28px; text-align: right; }
 
     /* BOOKS GRID */
     .books-grid { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 0.5px solid var(--border); border-radius: 3px; overflow: hidden; }
@@ -76,7 +76,7 @@
     .book-cover { width: 36px; height: 54px; flex-shrink: 0; background: var(--surface2); border-radius: 1px; overflow: hidden; }
     .book-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .book-info { flex: 1; min-width: 0; }
-    .book-title { font-family: 'EB Garamond', serif; font-size: 15px; font-weight: 500; line-height: 1.3; }
+    .book-title { font-size: 15px; font-weight: 500; line-height: 1.3; }
     .book-author { font-size: 12px; color: var(--muted); margin-top: 2px; }
     .book-badge { display: inline-flex; align-items: center; gap: 4px; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--blue); margin-top: 3px; }
 
@@ -87,14 +87,14 @@
     .todo-cover { width: 32px; height: 48px; flex-shrink: 0; background: var(--surface2); border-radius: 1px; overflow: hidden; }
     .todo-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .todo-text { flex: 1; min-width: 0; }
-    .todo-name { font-family: 'EB Garamond', serif; font-size: 15px; font-weight: 500; line-height: 1.3; }
+    .todo-name { font-size: 15px; font-weight: 500; line-height: 1.3; }
     .todo-author { font-size: 12px; color: var(--muted); margin-top: 2px; }
     .todo-hidden { display: none; }
     .btn-see-more { background: var(--bg); border: none; padding: 0.5rem 0.65rem; font-size: 12px; color: var(--muted); cursor: pointer; letter-spacing: 0.04em; transition: background 0.12s; text-align: left; }
     .btn-see-more:hover { background: var(--surface); color: var(--text); }
 
     /* DONATE */
-    .donate-intro { font-family: 'EB Garamond', serif; font-size: 19px; line-height: 1.75; margin-bottom: 0.75rem; }
+    .donate-intro { font-size: 19px; line-height: 1.75; margin-bottom: 0.75rem; }
     .donate-info { display: flex; flex-direction: column; gap: 0.6rem; }
     .donate-row { display: flex; align-items: center; gap: 0.65rem; }
     .donate-account { font-family: monospace; font-size: 14px; color: var(--text); }
@@ -103,24 +103,24 @@
     .events-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 0.5px solid var(--border); border-radius: 3px; overflow: hidden; }
     .event-item { display: flex; gap: 1.25rem; padding: 0.85rem 1.25rem; background: var(--bg); transition: background 0.12s; align-items: center; }
     .event-item:hover { background: var(--surface); }
-    .event-date { flex-shrink: 0; width: 48px; text-align: center; font-family: 'EB Garamond', serif; }
+    .event-date { flex-shrink: 0; width: 48px; text-align: center; }
     .event-day { font-size: 26px; font-weight: 500; line-height: 1; }
     .event-mon { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
     .event-info { flex: 1; }
-    .event-title { font-family: 'EB Garamond', serif; font-size: 17px; font-weight: 500; margin-bottom: 3px; }
+    .event-title { font-size: 17px; font-weight: 500; margin-bottom: 3px; }
     .event-desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
     .event-thumb { flex-shrink: 0; width: 80px; height: 54px; border-radius: 3px; overflow: hidden; background: var(--surface2); }
     .event-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
     /* FOOTER */
     .site-footer { border-top: 0.5px solid var(--border); padding: 1.5rem 1.5rem; margin: 0 -1.5rem; }
-    .footer-partners { max-width: 780px; margin: 0 auto; }
+    .footer-inner { max-width: 780px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
     .footer-partners-row { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
-    .partner-logo { display: flex; align-items: center; justify-content: center; width: 60px; height: 60px; border-radius: 50%; overflow: hidden; }
-    .partner-logo img { width: 100%; height: 100%; object-fit: cover; }
-    .footer-bottom { max-width: 780px; margin: 1.5rem auto 0; padding-top: 1.25rem; border-top: 0.5px solid var(--border); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; font-size: 12px; color: var(--muted); }
-    .footer-bottom a { color: var(--muted); text-decoration: none; }
-    .footer-bottom a:hover { color: var(--text); }
+    .partner-logo { display: flex; align-items: center; justify-content: center; width: 90px; height: 50px; }
+    .partner-logo img { width: 90px; height: 50px; object-fit: contain; }
+    .footer-email { font-size: 12px; color: var(--muted); }
+    .footer-email a { color: var(--muted); text-decoration: none; }
+    .footer-email a:hover { color: var(--text); }
 
     /* MODAL */
     .modal-overlay { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(26,26,24,0.55); backdrop-filter: blur(4px); align-items: center; justify-content: center; padding: 1.5rem; }
@@ -128,10 +128,10 @@
     .modal { background: var(--bg); border: 0.5px solid var(--border); border-radius: 8px; max-width: 540px; width: 100%; max-height: 85vh; overflow-y: auto; padding: 2.5rem; }
     .modal-close { float: right; background: none; border: none; cursor: pointer; font-size: 20px; color: var(--muted); line-height: 1; margin-left: 1rem; }
     .modal-close:hover { color: var(--text); }
-    .modal h2 { font-family: 'EB Garamond', serif; font-size: 24px; font-weight: 500; margin-bottom: 4px; line-height: 1.3; }
+    .modal h2 { font-size: 24px; font-weight: 500; margin-bottom: 4px; line-height: 1.3; }
     .modal-author { font-size: 13px; color: var(--muted); margin-bottom: 1.5rem; }
     .modal-section-title { font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 1.25rem 0 0.5rem; }
-    .modal p { font-family: 'EB Garamond', serif; font-size: 16px; line-height: 1.8; color: var(--muted); }
+    .modal p { font-size: 16px; line-height: 1.8; color: var(--muted); }
     .modal-team { display: flex; flex-direction: column; gap: 6px; }
     .modal-team-row { display: flex; justify-content: space-between; font-size: 13px; }
     .modal-team-role { color: var(--muted); }
@@ -140,8 +140,7 @@
     @media (max-width: 600px) {
       body { overflow-x: hidden; }
       .site { padding: 0 1.25rem 3rem; }
-      .site-header { padding: 0 1.25rem; }
-      .logo-text { display: none; }
+      .header-inner { padding: 0 1.25rem; }
       .logo-subtitle { display: none; }
       .stats-row { flex-direction: column; }
       .stat { border-right: none; border-bottom: 0.5px solid var(--border); }
@@ -257,11 +256,9 @@
 
 <!-- FOOTER -->
 <footer class="site-footer">
-  <div class="footer-partners">
+  <div class="footer-inner">
     <div class="footer-partners-row" id="footer-partners"></div>
-  </div>
-  <div class="footer-bottom">
-    <a href="mailto:rakviashvili@gmail.com">rakviashvili@gmail.com</a>
+    <div class="footer-email"><a href="mailto:rakviashvili@gmail.com">rakviashvili@gmail.com</a></div>
   </div>
 </footer>
 
