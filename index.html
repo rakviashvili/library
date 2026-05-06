@@ -50,39 +50,45 @@
     /* SECTIONS */
     section { margin-bottom: 2.5rem; scroll-margin-top: 72px; }
     section:last-of-type { margin-bottom: 0; }
-    .section-label { font-family: 'Cormorant Garamond', serif; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.85rem; padding-bottom: 0.4rem; border-bottom: 0.5px solid var(--border); }
+    .section-label { font-family: 'Cormorant Garamond', serif; font-size: 10.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.85rem; padding-bottom: 0.4rem; border-bottom: 0.5px solid var(--border); }
 
     /* PROJECT LIST */
     .project-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 0.5px solid var(--border); border-radius: 3px; overflow: hidden; }
-    .project-item { display: flex; align-items: center; gap: 1rem; padding: 0.75rem 1.25rem; background: var(--bg); transition: background 0.12s; cursor: pointer; }
+    .project-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.45rem 1.25rem; background: var(--bg); transition: background 0.12s; cursor: pointer; }
     .project-item:hover { background: var(--surface); }
-    .status-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .proj-cover { width: 28px; height: 42px; flex-shrink: 0; background: var(--surface2); border-radius: 1px; overflow: hidden; }
+    .proj-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .status-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
     .s-active { background: var(--green); }
     .proj-info { flex: 1; min-width: 0; }
-    .proj-name { font-family: 'EB Garamond', serif; font-size: 17px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .proj-meta { display: flex; gap: 8px; align-items: center; margin-top: 3px; flex-wrap: wrap; }
+    .proj-name { font-family: 'EB Garamond', serif; font-size: 15px; font-weight: 500; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .proj-meta { display: flex; gap: 8px; align-items: center; margin-top: 2px; flex-wrap: wrap; }
     .proj-author { font-size: 12px; color: var(--muted); }
-    .progress-wrap { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
-    .bar-bg { width: 72px; height: 4px; background: var(--surface2); border-radius: 2px; overflow: hidden; }
+    .progress-wrap { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+    .bar-bg { width: 56px; height: 3px; background: var(--surface2); border-radius: 2px; overflow: hidden; }
     .bar-fill { height: 100%; border-radius: 2px; background: var(--green); }
-    .pct { font-family: 'EB Garamond', serif; font-size: 15px; color: var(--muted); min-width: 36px; text-align: right; }
+    .pct { font-family: 'EB Garamond', serif; font-size: 13px; color: var(--muted); min-width: 28px; text-align: right; }
 
     /* BOOKS GRID */
-    .books-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); max-width: 400px; gap: 1px; background: var(--border); border: 0.5px solid var(--border); border-radius: 3px; overflow: hidden; }
-    .book-card { background: var(--bg); padding: 1.25rem; cursor: pointer; transition: background 0.12s; }
+    .books-grid { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 0.5px solid var(--border); border-radius: 3px; overflow: hidden; }
+    .book-card { display: flex; align-items: center; gap: 0.85rem; padding: 0.55rem 1.25rem; background: var(--bg); cursor: pointer; transition: background 0.12s; }
     .book-card:hover { background: var(--surface); }
-    .book-cover { width: 100%; aspect-ratio: 3/4; background: var(--surface2); border-radius: 2px; margin-bottom: 10px; overflow: hidden; }
+    .book-cover { width: 36px; height: 54px; flex-shrink: 0; background: var(--surface2); border-radius: 1px; overflow: hidden; }
     .book-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .book-title { font-family: 'EB Garamond', serif; font-size: 16px; font-weight: 500; line-height: 1.3; margin-bottom: 4px; }
-    .book-author { font-size: 11.5px; color: var(--muted); margin-bottom: 6px; }
-    .book-badge { display: inline-flex; align-items: center; gap: 4px; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--blue); }
+    .book-info { flex: 1; min-width: 0; }
+    .book-title { font-family: 'EB Garamond', serif; font-size: 15px; font-weight: 500; line-height: 1.3; }
+    .book-author { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .book-badge { display: inline-flex; align-items: center; gap: 4px; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--blue); margin-top: 3px; }
 
     /* PLANNED BOOKS */
-    .todo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1px; background: var(--border); border: 0.5px solid var(--border); border-radius: 3px; overflow: hidden; }
-    .todo-item { padding: 0.5rem 0.65rem; background: var(--bg); transition: background 0.12s; }
+    .todo-grid { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 0.5px solid var(--border); border-radius: 3px; overflow: hidden; }
+    .todo-item { display: flex; align-items: center; gap: 0.85rem; padding: 0.5rem 1.25rem; background: var(--bg); transition: background 0.12s; }
     .todo-item:hover { background: var(--surface); }
-    .todo-name { font-family: 'EB Garamond', serif; font-size: 13px; font-weight: 500; line-height: 1.3; }
-    .todo-author { font-size: 10px; color: var(--muted); margin-top: 2px; }
+    .todo-cover { width: 32px; height: 48px; flex-shrink: 0; background: var(--surface2); border-radius: 1px; overflow: hidden; }
+    .todo-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .todo-text { flex: 1; min-width: 0; }
+    .todo-name { font-family: 'EB Garamond', serif; font-size: 15px; font-weight: 500; line-height: 1.3; }
+    .todo-author { font-size: 12px; color: var(--muted); margin-top: 2px; }
     .todo-hidden { display: none; }
     .btn-see-more { background: var(--bg); border: none; padding: 0.5rem 0.65rem; font-size: 12px; color: var(--muted); cursor: pointer; letter-spacing: 0.04em; transition: background 0.12s; text-align: left; }
     .btn-see-more:hover { background: var(--surface); color: var(--text); }
@@ -92,6 +98,7 @@
     .donate-info { display: flex; flex-direction: column; gap: 0.6rem; }
     .donate-row { display: flex; align-items: center; gap: 0.65rem; }
     .donate-account { font-family: monospace; font-size: 14px; color: var(--text); }
+    .bank-logo { height: 22px; width: auto; display: block; object-fit: contain; }
     /* EVENTS */
     .events-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 0.5px solid var(--border); border-radius: 3px; overflow: hidden; }
     .event-item { display: flex; gap: 1.25rem; padding: 0.85rem 1.25rem; background: var(--bg); transition: background 0.12s; align-items: center; }
@@ -135,6 +142,8 @@
       .site-header { padding: 0 1rem; }
       .logo-text { display: none; }
       .logo-subtitle { display: none; }
+      .hero { flex-direction: column; }
+      .hero-illustration { display: none; }
       .stats-row { flex-direction: column; }
       .stat { border-right: none; border-bottom: 0.5px solid var(--border); }
       .stat:last-child { border-bottom: none; }
@@ -169,7 +178,7 @@
       </svg>
       <div class="logo-titles">
         <span class="logo-text">წიგნიერება</span>
-        <span class="logo-subtitle">ქართული მეცნიერული ენის განვითარების პროექტი</span>
+        <span class="logo-subtitle">ქართული სამეცნიერო ენის განვითარების პროექტი</span>
       </div>
     </a>
     <nav>
@@ -190,44 +199,12 @@
       <div class="stat"><div class="stat-num">45</div><div class="stat-label">დაგეგმილი</div></div>
       <div class="stat"><div class="stat-num">3</div><div class="stat-label">პარტნიორი</div></div>
     </div>
-
   </section>
 
   <!-- ACTIVE PROJECTS -->
   <section id="projects">
     <p class="section-label">მიმდინარე თარგმანები</p>
-    <div class="project-list">
-      <div class="project-item" onclick="openBook('leeson')">
-        <div class="status-dot s-active"></div>
-        <div class="proj-info">
-          <div class="proj-name">The Invisible Hook: The Hidden Economics of Pirates</div>
-          <div class="proj-meta"><span class="proj-author">Peter T. Leeson</span></div>
-        </div>
-        <div class="progress-wrap"><div class="bar-bg"><div class="bar-fill" style="width:1%"></div></div><span class="pct">1%</span></div>
-      </div>
-      <div class="project-item" onclick="openBook('oppenheimer')">
-        <div class="status-dot s-active"></div>
-        <div class="proj-info">
-          <div class="proj-name">The State</div>
-          <div class="proj-meta"><span class="proj-author">Franz Oppenheimer</span></div>
-        </div>
-        <div class="progress-wrap"><div class="bar-bg"><div class="bar-fill" style="width:2%"></div></div><span class="pct">2%</span></div>
-      </div>
-      <div class="project-item" onclick="openBook('white')">
-        <div class="status-dot s-active"></div>
-        <div class="proj-info">
-          <div class="proj-name">Better Money</div>
-          <div class="proj-meta"><span class="proj-author">Lawrence H. White</span></div>
-        </div>
-      </div>
-      <div class="project-item" onclick="openBook('nozick')">
-        <div class="status-dot s-active"></div>
-        <div class="proj-info">
-          <div class="proj-name">Anarchy, State, and Utopia</div>
-          <div class="proj-meta"><span class="proj-author">Robert Nozick</span></div>
-        </div>
-      </div>
-    </div>
+    <div class="project-list" id="active-grid"></div>
   </section>
 
   <!-- COMPLETED BOOKS -->
@@ -239,54 +216,14 @@
   <!-- PLANNED BOOKS -->
   <section id="planned">
     <p class="section-label">დაგეგმილი წიგნები (45)</p>
-    <div class="todo-grid">
-      <div class="todo-item"><div class="todo-name">On Revolution</div><div class="todo-author">Hannah Arendt</div></div>
-      <div class="todo-item"><div class="todo-name">Antitrust and Monopoly: Anatomy of a Policy Failure</div><div class="todo-author">Dominick T. Armentano</div></div>
-      <div class="todo-item"><div class="todo-name">Economics in One Lesson</div><div class="todo-author">Henry Hazlitt</div></div>
-      <div class="todo-item"><div class="todo-name">The Morality of Law</div><div class="todo-author">Lon L. Fuller</div></div>
-      <div class="todo-item todo-hidden"><div class="todo-name">The Rise and Decline of the State</div><div class="todo-author">Martin van Creveld</div></div>
-      <div class="todo-item todo-hidden"><div class="todo-name">The Noblest Triumph: Property and Prosperity Through the Ages</div><div class="todo-author">Tom Bethell</div></div>
-      <div class="todo-item todo-hidden"><div class="todo-name">Bureaucracy</div><div class="todo-author">Ludwig von Mises</div></div>
-      <div class="todo-item todo-hidden"><div class="todo-name">On Violence</div><div class="todo-author">Hannah Arendt</div></div>
-      <div class="todo-item todo-hidden"><div class="todo-name">Freedom and the Law</div><div class="todo-author">Bruno Leoni</div></div>
-      <div class="todo-item todo-hidden"><div class="todo-name">Theory and History</div><div class="todo-author">Ludwig von Mises</div></div>
-      <div class="todo-item todo-hidden"><div class="todo-name">On Power: The Natural History of Its Growth</div><div class="todo-author">Bertrand de Jouvenel</div></div>
-      <div class="todo-item todo-hidden"><div class="todo-name">The Anti-Capitalistic Mentality</div><div class="todo-author">Ludwig von Mises</div></div>
-      <div class="todo-item todo-hidden"><div class="todo-name">The Methodology of Economics: Or, How Economists Explain</div><div class="todo-author">Mark Blaug</div></div>
-      <div class="todo-item todo-hidden"><div class="todo-name">America's Great Depression</div><div class="todo-author">Murray N. Rothbard</div></div>
-      <div class="todo-item todo-hidden"><div class="todo-name">The Bonobo and the Atheist: In Search of Humanism Among the Primates</div><div class="todo-author">Frans de Waal</div></div>
-      <div class="todo-item todo-hidden"><div class="todo-name">Seeing Like a State: How Certain Schemes to Improve the Human Condition Have Failed</div><div class="todo-author">James C. Scott</div></div>
-      <div class="todo-item todo-hidden"><div class="todo-name">The Fatal Conceit: The Errors of Socialism</div><div class="todo-author">Friedrich A. Hayek</div></div>
-      <div class="todo-item todo-hidden"><div class="todo-name">Chimpanzee Politics: Power and Sex among Apes</div><div class="todo-author">Frans de Waal</div></div>
-      <div class="todo-item todo-hidden"><div class="todo-name">Law, Legislation, and Liberty</div><div class="todo-author">Friedrich A. Hayek</div></div>
-      <div class="todo-item todo-hidden"><div class="todo-name">Transformation of War</div><div class="todo-author">Martin van Creveld</div></div>
-      <div class="todo-item todo-hidden"><div class="todo-name">The Philosophy of the Austrian School</div><div class="todo-author">Raimondo Cubeddu</div></div>
-      <div class="todo-item todo-hidden"><div class="todo-name">Capitalism and Freedom</div><div class="todo-author">Milton Friedman</div></div>
-      <div class="todo-item todo-hidden"><div class="todo-name">Man, Economy, and State</div><div class="todo-author">Murray N. Rothbard</div></div>
-      <div class="todo-item todo-hidden"><div class="todo-name">Money, Bank Credit, and Economic Cycles</div><div class="todo-author">Jesus Huerta de Soto</div></div>
-      <div class="todo-item todo-hidden"><div class="todo-name">Crisis and Leviathan</div><div class="todo-author">Robert Higgs</div></div>
-      <div class="todo-item todo-hidden"><div class="todo-name">The Liberal Archipelago: A Theory of Diversity and Freedom</div><div class="todo-author">Chandran Kukathas</div></div>
-      <div class="todo-item todo-hidden"><div class="todo-name">Anarchy, State And Public Choice</div><div class="todo-author">Edward Stringham</div></div>
-      <div class="todo-item todo-hidden"><div class="todo-name">Reinventing Civil Society: The Rediscovery of Welfare Without Politics</div><div class="todo-author">David G. Green</div></div>
-      <div class="todo-item todo-hidden"><div class="todo-name">Lessons for the Young Economist</div><div class="todo-author">Robert P. Murphy</div></div>
-      <div class="todo-item todo-hidden"><div class="todo-name">The Myth of the Rational Voter: Why Democracies Choose Bad Policies</div><div class="todo-author">Bryan Caplan</div></div>
-      <div class="todo-item todo-hidden"><div class="todo-name">For a New Liberty: The Libertarian Manifesto</div><div class="todo-author">Murray N. Rothbard</div></div>
-      <div class="todo-item todo-hidden"><div class="todo-name">Capitalism and the Historians</div><div class="todo-author">Friedrich A. Hayek</div></div>
-      <div class="todo-item todo-hidden"><div class="todo-name">The King's Two Bodies: A Study in Medieval Political Theology</div><div class="todo-author">Ernst Kantorowicz</div></div>
-      <div class="todo-item todo-hidden"><div class="todo-name">Human Action</div><div class="todo-author">Ludwig von Mises</div></div>
-      <div class="todo-item todo-hidden"><div class="todo-name">A History of Money and Banking in the United States: The Colonial Era to World War II</div><div class="todo-author">Murray N. Rothbard</div></div>
-      <div class="todo-item todo-hidden"><div class="todo-name">The Ethics of Liberty</div><div class="todo-author">Murray N. Rothbard</div></div>
-      <div class="todo-item todo-hidden"><div class="todo-name">An Austrian Perspective on the History of Economic Thought. 1</div><div class="todo-author">Murray N. Rothbard</div></div>
-      <div class="todo-item todo-hidden"><div class="todo-name">An Austrian Perspective on the History of Economic Thought. 2</div><div class="todo-author">Murray N. Rothbard</div></div>
-      <div class="todo-item todo-hidden"><div class="todo-name">The Austrian School: Market Order and Entrepreneurial Creativity</div><div class="todo-author">Jesus Huerta de Soto</div></div>
-      <div class="todo-item todo-hidden"><div class="todo-name">Competition and Entrepreneurship</div><div class="todo-author">Israel M. Kirzner</div></div>
-      <div class="todo-item todo-hidden"><div class="todo-name">Contemporary Political Philosophy: An Introduction</div><div class="todo-author">Will Kymlicka</div></div>
-      <div class="todo-item todo-hidden"><div class="todo-name">For Good and Evil: The Impact of Taxes on the Course of Civilization</div><div class="todo-author">Charles Adams</div></div>
-      <div class="todo-item todo-hidden"><div class="todo-name">The Ultimate Resource 2</div><div class="todo-author">Julian Lincoln Simon</div></div>
-      <div class="todo-item todo-hidden"><div class="todo-name">History of Economic Analysis</div><div class="todo-author">Joseph A. Schumpeter</div></div>
-      <div class="todo-item todo-hidden"><div class="todo-name">The Rhetoric of Economics (Rhetoric of the Human Sciences)</div><div class="todo-author">Deirdre N. McCloskey</div></div>
-      <button class="btn-see-more" onclick="showAllPlanned(this)">see more</button>
-    </div>
+    <div class="todo-grid" id="planned-grid"></div>
+    <button class="btn-see-more" onclick="showAllPlanned(this)">see more</button>
+  </section>
+
+  <!-- EVENTS -->
+  <section id="events">
+    <p class="section-label">ღონისძიებები და კონფერენციები</p>
+    <div class="events-list" id="events-grid"></div>
   </section>
 
   <!-- DONATE -->
@@ -295,24 +232,18 @@
     <p class="donate-intro">თუ გსურთ მხარი დაუჭიროთ პროექტს:</p>
     <div class="donate-info">
       <div class="donate-row">
-        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="20" viewBox="0 0 36 20"><rect width="36" height="20" rx="3" fill="#1A56DB"/><text x="18" y="14" font-family="Arial,sans-serif" font-size="9" font-weight="bold" fill="white" text-anchor="middle" letter-spacing="0.5">TBC</text></svg>
-        <span class="donate-account">GE44TB7038445064300044</span>
-      </div>
-      <div class="donate-row">
-        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="20" viewBox="0 0 36 20"><rect width="36" height="20" rx="3" fill="#E2231A"/><text x="18" y="14" font-family="Arial,sans-serif" font-size="9" font-weight="bold" fill="white" text-anchor="middle" letter-spacing="0.5">BOG</text></svg>
-        <span class="donate-account">GE59BG0000000740227700</span>
-      </div>
-      <div class="donate-row">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#F7931A"/><text x="10" y="15" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="white" text-anchor="middle">&#x20BF;</text></svg>
         <span class="donate-account">bc1qtzvernqf7ee693jc5qjzec00mk3rg5zmx5hruu</span>
       </div>
+      <div class="donate-row">
+        <img class="bank-logo" src="Logos/bog-logo.png" alt="BOG"/>
+        <span class="donate-account">GE59BG0000000740227700</span>
+      </div>
+      <div class="donate-row">
+        <img class="bank-logo" src="Logos/tbc-logo.png" alt="TBC"/>
+        <span class="donate-account">GE44TB7038445064300044</span>
+      </div>
     </div>
-  </section>
-
-  <!-- EVENTS -->
-  <section id="events">
-    <p class="section-label">ღონისძიებები და კონფერენციები</p>
-    <div class="events-list" id="events-grid"></div>
   </section>
 
 
@@ -376,7 +307,7 @@ const books = {
   block: {
     title: "დაცვა ვერდასაცავისა",
     author: "უოლტერ ბლოკი",
-    annotation: "ბლოკი ლიბერტარიანული ეთიკის პოზიციიდან ანალიზებს საზოგადოების სასჯელის ღირსად მიჩნეულ ადამიანთა ჯგუფებს. გახდა ლიბერტარიანული ფილოსოფიის ერთ-ერთი მნიშვნელოვანი ტექსტი.",
+    annotation: "ეპატაჟურ ნაწარმოებში, რომელიც გამოიცა აშშ-ში 40 წლის წინ, პროფესორი უოლტერ ბლოკი ლიბერტარიანული ეთიკისა და მიუკერძოებელი ლოგიკის პოზიციებიდან იკვლევს საზოგადოების მიერ დევნილ ტიპაჟებს, რომელთა შორისაც არიან: სუტენიორი, მეძავი, ბარაკების მეპატრონე, შანტაჟისტი, მევახშე, ცილისმწამებელი, ნარკორეალიზატორი, სპეკულანტი, შუამავალი და სხვები. ანალიზის შედეგები აოცებს თავისი სითამამით და პარადოქსულობით.",
     status: "დასრულებულია. ხელმისაწვდომია გირჩის ოფისში.",
     team: [{role:"მთარგმნელი",name:"ანინა ტეფნაძე"},{role:"რედაქტორი",name:"ჰერმან საბო, სანდრო რაქვიაშვილი"}],
     image: "b1"
@@ -384,8 +315,8 @@ const books = {
   "rothbard-anatomy": {
     title: "სახელმწიფოს ანატომია",
     author: "მიურეი როთბარდი",
-    annotation: "როთბარდი ანალიზებს სახელმწიფოს ბუნებას, როგორც ძალდობრივ ინსტიტუტს, რომელიც ინარჩუნებს ძალაუფლებას გადასახადების, კანონისა და იდეოლოგიური ლეგიტიმაციის მეშვეობით.",
-    status: "დასრულებულია. ხელმისაწვდომია გირჩის ოფისში.",
+    annotation: "მიურეი როთბარდის ერთ-ერთი ყველაზე ცნობილი ნაშრომი, რომელიც მკითხველს აჩვენებს, თუ რა არის სახელმწიფო, როგორ წარმოიშვა ის და რისთვის არსებობს.",
+    status: "დასრულებულია. ხელმისაწვდომია გირჩის ოფისში და საიტზე mises.org",
     team: [{role:"მთარგმნელი",name:"ანინა ტეფნაძე"},{role:"რედაქტორი",name:"სანდრო რაქვიაშვილი"}],
     image: "b2"
   }
@@ -404,12 +335,36 @@ function renderDoneBooks() {
   grid.innerHTML = done.map(([id, b]) => `
     <div class="book-card" onclick="openBook('${id}')">
       <div class="book-cover"><img src="${bookImages[b.image]}" alt="${b.title}"/></div>
-      <div class="book-title">${b.title}</div>
-      <div class="book-author">${b.author}</div>
-      <div class="book-badge">✓ დასრულებული</div>
+      <div class="book-info">
+        <div class="book-title">${b.title}</div>
+        <div class="book-author">${b.author}</div>
+        <div class="book-badge">✓ დასრულებული</div>
+      </div>
     </div>`).join('');
 }
 renderDoneBooks();
+
+const activeBookIds = ['leeson', 'oppenheimer', 'white', 'nozick'];
+function renderActiveBooks() {
+  document.getElementById('active-grid').innerHTML = activeBookIds.map(id => {
+    const b = books[id];
+    const cover = `https://covers.openlibrary.org/b/title/${encodeURIComponent(b.title)}-S.jpg`;
+    const pct = b.status.match(/(\d+)%/)?.[1];
+    const progressHtml = pct
+      ? `<div class="progress-wrap"><div class="bar-bg"><div class="bar-fill" style="width:${pct}%"></div></div><span class="pct">${pct}%</span></div>`
+      : '';
+    return `<div class="project-item" onclick="openBook('${id}')">
+      <div class="proj-cover"><img src="${cover}" alt="" onerror="this.style.display='none'"/></div>
+      <div class="status-dot s-active"></div>
+      <div class="proj-info">
+        <div class="proj-name">${b.title}</div>
+        <div class="proj-meta"><span class="proj-author">${b.author}</span></div>
+      </div>
+      ${progressHtml}
+    </div>`;
+  }).join('');
+}
+renderActiveBooks();
 
 function openBook(id) {
   const b = books[id]; if (!b) return;
@@ -432,8 +387,67 @@ function closeModal(e) {
 }
 
 
+const plannedBooks = [
+  { title: "On Revolution", author: "Hannah Arendt" },
+  { title: "Antitrust and Monopoly: Anatomy of a Policy Failure", author: "Dominick T. Armentano" },
+  { title: "Economics in One Lesson", author: "Henry Hazlitt" },
+  { title: "The Morality of Law", author: "Lon L. Fuller" },
+  { title: "The Rise and Decline of the State", author: "Martin van Creveld" },
+  { title: "The Noblest Triumph: Property and Prosperity Through the Ages", author: "Tom Bethell" },
+  { title: "Bureaucracy", author: "Ludwig von Mises" },
+  { title: "On Violence", author: "Hannah Arendt" },
+  { title: "Freedom and the Law", author: "Bruno Leoni" },
+  { title: "Theory and History", author: "Ludwig von Mises" },
+  { title: "On Power: The Natural History of Its Growth", author: "Bertrand de Jouvenel" },
+  { title: "The Anti-Capitalistic Mentality", author: "Ludwig von Mises" },
+  { title: "The Methodology of Economics: Or, How Economists Explain", author: "Mark Blaug" },
+  { title: "America's Great Depression", author: "Murray N. Rothbard" },
+  { title: "The Bonobo and the Atheist: In Search of Humanism Among the Primates", author: "Frans de Waal" },
+  { title: "Seeing Like a State", author: "James C. Scott" },
+  { title: "The Fatal Conceit: The Errors of Socialism", author: "Friedrich A. Hayek" },
+  { title: "Chimpanzee Politics: Power and Sex among Apes", author: "Frans de Waal" },
+  { title: "Law Legislation and Liberty", author: "Friedrich A. Hayek" },
+  { title: "Transformation of War", author: "Martin van Creveld" },
+  { title: "The Philosophy of the Austrian School", author: "Raimondo Cubeddu" },
+  { title: "Capitalism and Freedom", author: "Milton Friedman" },
+  { title: "Man Economy and State", author: "Murray N. Rothbard" },
+  { title: "Money Bank Credit and Economic Cycles", author: "Jesus Huerta de Soto" },
+  { title: "Crisis and Leviathan", author: "Robert Higgs" },
+  { title: "The Liberal Archipelago", author: "Chandran Kukathas" },
+  { title: "Anarchy State And Public Choice", author: "Edward Stringham" },
+  { title: "Reinventing Civil Society", author: "David G. Green" },
+  { title: "Lessons for the Young Economist", author: "Robert P. Murphy" },
+  { title: "The Myth of the Rational Voter", author: "Bryan Caplan" },
+  { title: "For a New Liberty: The Libertarian Manifesto", author: "Murray N. Rothbard" },
+  { title: "Capitalism and the Historians", author: "Friedrich A. Hayek" },
+  { title: "The King's Two Bodies", author: "Ernst Kantorowicz" },
+  { title: "Human Action", author: "Ludwig von Mises" },
+  { title: "A History of Money and Banking in the United States", author: "Murray N. Rothbard" },
+  { title: "The Ethics of Liberty", author: "Murray N. Rothbard" },
+  { title: "An Austrian Perspective on the History of Economic Thought 1", author: "Murray N. Rothbard" },
+  { title: "An Austrian Perspective on the History of Economic Thought 2", author: "Murray N. Rothbard" },
+  { title: "The Austrian School: Market Order and Entrepreneurial Creativity", author: "Jesus Huerta de Soto" },
+  { title: "Competition and Entrepreneurship", author: "Israel M. Kirzner" },
+  { title: "Contemporary Political Philosophy", author: "Will Kymlicka" },
+  { title: "For Good and Evil: The Impact of Taxes on the Course of Civilization", author: "Charles Adams" },
+  { title: "The Ultimate Resource 2", author: "Julian Lincoln Simon" },
+  { title: "History of Economic Analysis", author: "Joseph A. Schumpeter" },
+  { title: "The Rhetoric of Economics", author: "Deirdre N. McCloskey" }
+];
+function renderPlannedBooks() {
+  document.getElementById('planned-grid').innerHTML = plannedBooks.map((b, i) => {
+    const hidden = i >= 4 ? ' todo-hidden' : '';
+    const cover = `https://covers.openlibrary.org/b/title/${encodeURIComponent(b.title)}-S.jpg`;
+    return `<div class="todo-item${hidden}">
+      <div class="todo-cover"><img src="${cover}" alt="" onerror="this.style.display='none'"/></div>
+      <div class="todo-text"><div class="todo-name">${b.title}</div><div class="todo-author">${b.author}</div></div>
+    </div>`;
+  }).join('');
+}
+renderPlannedBooks();
+
 function showAllPlanned(btn) {
-  const items = document.querySelectorAll('.todo-item');
+  const items = document.querySelectorAll('#planned-grid .todo-item');
   if (btn.dataset.expanded === '1') {
     let count = 0;
     items.forEach(el => { if (count >= 4) el.classList.add('todo-hidden'); count++; });
@@ -451,8 +465,8 @@ function showAllPlanned(btn) {
 const mainPage = {
   name: "წიგნიერება",
   heroText: "წიგნიერება",
-  heroSubtitle: "ქართული მეცნიერული ენის განვითარების პროექტი",
-  mission: "წიგნიერება არის ქართული მეცნიერული ენის განვითარების პროექტი, რომლის მიზანია ქართული მეცნიერული ტერმინოლოგიის ჩამოყალიბებაა. მიზნის მისაღწევად სოციალურ და ჰუმანიტარულ მეცნიერებში ცნობილი წიგნების თარგმნა ხორციელდება და ამ პროცესში საჭრო ტერმინების თარგმანი მეცნიერული კონფერეცნიის ფორმატში ფილოლოგების განხილვის ობიექტად იქცევა. ამ ტერმინების თარგმნა, განხილვა და შემდგომი პრაქტიკაში დანერგვა ქართულ მეცნიერული ენის გამდიდრებას შეუწყობს ხელს და დაეხმარება მკლევარებსა მომავალში ქართულად ჩანოაყალიბონ და განავითარონ საკუთარი იდეები, თეორიები და კონცეფციები."
+  heroSubtitle: "ქართული სამეცნიერო ენის განვითარების პროექტი",
+  mission: "წიგნიერება არის ქართული სამეცნიერო ენის განვითარების პროექტი, რომლის მიზანია ქართული მეცნიერული ტერმინოლოგიის ჩამოყალიბებაა. მიზნის მისაღწევად სოციალურ და ჰუმანიტარულ მეცნიერებში ცნობილი წიგნების თარგმნა ხორციელდება და ამ პროცესში საჭრო ტერმინების თარგმანი აკადემიური კონფერეცნიის ფორმატში განხილვის ობიექტად იქცევა. ამ ტერმინების თარგმნა, განხილვა და შემდგომი პრაქტიკაში დანერგვა ქართულ სამეცნიერო ენის გამდიდრებას შეუწყობს ხელს და მკლევარებს დაეხმარება მომავალში ქართულად ჩანოაყალიბონ და განავითარონ საკუთარი იდეები, თეორიები და კონცეფციები."
 };
 document.title = mainPage.name;
 document.querySelector('.hero h1').textContent = mainPage.heroText;
