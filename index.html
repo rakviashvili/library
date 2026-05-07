@@ -164,9 +164,9 @@
     .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    .mobile-nav { display: none; position: fixed; top: 72px; right: 0; z-index: 99; flex-direction: column; padding: 0.25rem 0; background: var(--white); box-shadow: 0 8px 24px rgba(26,16,16,0.14); border-radius: 0 0 0 10px; min-width: 170px; }
+    .mobile-nav { display: none; position: fixed; top: 72px; right: 0; z-index: 99; flex-direction: column; padding: 0.15rem 0; background: var(--white); box-shadow: 0 8px 24px rgba(26,16,16,0.14); border-radius: 0 0 0 8px; min-width: 150px; }
     .mobile-nav.open { display: flex; }
-    .mobile-nav a { font-family: var(--font); font-size: 15px; font-weight: 500; color: var(--text-dark); padding: 0.75rem 1.25rem; border-bottom: 1px solid var(--border); text-align: right; letter-spacing: 0.01em; }
+    .mobile-nav a { font-family: var(--font); font-size: 14.5px; font-weight: 400; color: var(--text-muted); padding: 0.5rem 1rem; border-bottom: 1px solid var(--border); text-align: right; letter-spacing: 0; }
     .mobile-nav a:last-child { border-bottom: none; }
     .mobile-nav a:active { color: var(--red); }
 
@@ -175,6 +175,10 @@
       .hero { grid-template-columns: 1fr; gap: 2.5rem; padding: 3rem 0 2.5rem; }
     }
     @media (max-width: 600px) {
+      .cards-grid { grid-template-columns: repeat(auto-fill, minmax(82px, 1fr)); gap: 0.45rem; }
+      .card-body { padding: 0.35rem 0.4rem; }
+      .card-title { font-size: 9.5px; }
+      .card-author { font-size: 9px; }
       body { overflow-x: hidden; }
       .site { padding: 0 1rem 2.5rem; }
       .header-inner { padding: 0 1rem; height: 60px; }
@@ -204,8 +208,9 @@
       .site-footer { position: relative; }
       .footer-inner { height: auto; flex-direction: column; align-items: flex-start; gap: 0; padding: 1.25rem 1rem; }
       .footer-logo-link { padding-bottom: 1rem; }
-      .footer-nav { flex-wrap: wrap; gap: 1rem 1.5rem; padding-bottom: 0.25rem; }
+      .footer-nav { flex-wrap: nowrap; gap: 1.25rem; padding-bottom: 0.25rem; }
       .footer-nav a { font-size: 13px; }
+      .footer-nav a:nth-child(1), .footer-nav a:nth-child(2) { display: none; }
       .btn-see-more { width: 100%; text-align: center; padding: 0.6rem 1rem; }
     }
     @media (max-width: 380px) {
@@ -690,7 +695,7 @@ const mainPage = {
   name: "წიგნიერება",
   heroText: "წიგნიერება",
   heroSubtitle: "ქართული სამეცნიერო ენის განვითარების პროექტი",
-  mission: "წიგნიერება არის ქართული სამეცნიერო ენის განვითარების პროექტი, რომლის მიზანია ქართული მეცნიერული ტერმინოლოგიის ჩამოყალიბებაა. მიზნის მისაღწევად სოციალურ და ჰუმანიტარულ მეცნიერებში ცნობილი წიგნების თარგმნა ხორციელდება და ამ პროცესში საჭრო ტერმინების თარგმანი აკადემიური კონფერეცნიის ფორმატში განხილვის ობიექტად იქცევა. ამ ტერმინების თარგმნა, განხილვა და შემდგომი პრაქტიკაში დანერგვა ქართულ სამეცნიერო ენის გამდიდრებას შეუწყობს ხელს და მკლევარებს დაეხმარება მომავალში ქართულად ჩანოაყალიბონ და განავითარონ საკუთარი იდეები, თეორიები და კონცეფციები."
+  mission: "წიგნიერება არის ქართული სამეცნიერო ენის განვითარების პროექტი, რომლის მიზანია ქართული მეცნიერული ტერმინოლოგიის ჩამოყალიბება. მიზნის მისაღწევად სოციალურ და ჰუმანიტარულ მეცნიერებში ცნობილი წიგნების თარგმნა ხორციელდება და ამ პროცესში საჭირო ტერმინების თარგმანი აკადემიური კონფერენციის ფორმატში განხილვის ობიექტად იქცევა. ამ ტერმინების თარგმნა, განხილვა და შემდგომი პრაქტიკაში დანერგვა ქართული სამეცნიერო ენის გამდიდრებას შეუწყობს ხელს და მკლევარებს დაეხმარება მომავალში ქართულად ჩამოაყალიბონ და განავითარონ საკუთარი იდეები, თეორიები და კონცეფციები."
 };
 document.title = mainPage.name;
 document.querySelector('.hero h1').textContent = mainPage.heroText;
