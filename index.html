@@ -314,7 +314,6 @@
         <span class="footer-logo-tagline">ქართული მეცნიერული ენის განვითარების პროექტი</span>
       </div>
     </a>
-    <div id="footer-partners" style="display:flex;gap:1.5rem;align-items:center;"></div>
     <nav class="footer-nav">
       <a href="#projects">თარგმანები</a>
       <a href="#events">ღონისძიებები</a>
@@ -432,7 +431,7 @@ const books = {
     annotation: "ეპატაჟურ ნაწარმოებში, რომელიც გამოიცა აშშ-ში 40 წლის წინ, პროფესორი უოლტერ ბლოკი ლიბერტარიანული ეთიკისა და მიუკერძოებელი ლოგიკის პოზიციებიდან იკვლევს საზოგადოების მიერ დევნილ ტიპაჟებს, რომელთა შორისაც არიან: სუტენიორი, მეძავი, ბარაკების მეპატრონე, შანტაჟისტი, მევახშე, ცილისმწამებელი, ნარკორეალიზატორი, სპეკულანტი, შუამავალი და სხვები. ანალიზის შედეგები აოცებს თავისი სითამამით და პარადოქსულობით.",
     status: "დასრულებულია. ხელმისაწვდომია გირჩის ოფისში.",
     team: [{role:"მთარგმნელი",name:"ანინა ტეფნაძე"},{role:"რედაქტორი",name:"ჰერმან საბო, სანდრო რაქვიაშვილი"}],
-    image: "b1"
+    image: "Images/დაცვა ვერდასაცავის.jpg"
   },
   "rothbard-anatomy": {
     title: "სახელმწიფოს ანატომია",
@@ -440,13 +439,8 @@ const books = {
     annotation: "მიურეი როთბარდის ერთ-ერთი ყველაზე ცნობილი ნაშრომი, რომელიც მკითხველს აჩვენებს, თუ რა არის სახელმწიფო, როგორ წარმოიშვა ის და რისთვის არსებობს.",
     status: "დასრულებულია. ხელმისაწვდომია გირჩის ოფისში და საიტზე mises.org",
     team: [{role:"მთარგმნელი",name:"ანინა ტეფნაძე"},{role:"რედაქტორი",name:"სანდრო რაქვიაშვილი"}],
-    image: "b2"
+    image: "Images/სახელმწიფოს ანატომია.jpeg"
   }
-};
-
-const bookImages = {
-  b1: "Images/b1.jpg",
-  b2: "Images/b2.jpeg"
 };
 
 const activeBookIds = ['leeson', 'oppenheimer', 'white', 'nozick', 'hayek'];
@@ -461,7 +455,7 @@ function renderDoneBooks() {
     <div class="card-item" onclick="openBook('${id}')">
       <div class="card-cover-wrap" style="background:${coverColors[i % coverColors.length]}">
         <span class="card-cover-letter">${b.title.charAt(0)}</span>
-        <img src="${bookImages[b.image]}" alt="${b.title}"/>
+        <img src="${b.image}" alt="${b.title}"/>
       </div>
       <div class="card-body">
         <div class="card-title">${b.title}</div>
@@ -555,7 +549,7 @@ function openPartners() {
   list.innerHTML = partners.filter(p => p.name).map(p => {
     const href = p.site ? `https://${p.site.trim()}` : '#';
     const logo = partnerLogos[p.num];
-    return `<div style="margin-top:1rem"><a href="${href}" target="_blank">${logo ? `<img src="${logo}" alt="${p.name}" style="max-height:80px;max-width:200px;object-fit:contain;display:block">` : p.name}</a></div>`;
+    return `<div style="margin-top:1rem"><a href="${href}" target="_blank" style="display:inline-flex;flex-direction:column;align-items:center;gap:0.5rem;text-decoration:none">${logo ? `<img src="${logo}" alt="${p.name}" style="max-height:80px;max-width:200px;object-fit:contain;display:block">` : ''}<span style="font-size:13px;color:var(--text-dark)">${p.name}</span></a></div>`;
   }).join('');
   document.getElementById('partners-overlay').classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -668,11 +662,10 @@ document.querySelector('.hero-eyebrow').textContent = mainPage.heroSubtitle;
 document.querySelector('.mission').textContent = mainPage.mission;
 
 const events = [
-  { num: 1, name: "წიგნის პრეზენტაცია. ჰაიეკი. გზა ბატონყმობისკენ", date: "14 ივლისი 2026", time: "18:00", place: "საქართველოს უნივერსიტეტი, აუდიტორია 525", annotation: "წიგნის პრეზენტაცია" }
+  { num: 1, name: "წიგნის პრეზენტაცია. ჰაიეკი. გზა ბატონყმობისკენ", date: "14 ივლისი 2026", time: "18:00", place: "საქართველოს უნივერსიტეტი, აუდიტორია 519", annotation: "წიგნის პრეზენტაცია" }
 ];
 const eventImages = {
-  1: "Images/e1.webp",
-  2: "Images/e2.jpeg"
+  1: "Images/The Road to Serfdom.webp"
 };
 function buildGCalUrl(e) {
   const months = {
