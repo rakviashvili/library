@@ -114,8 +114,10 @@
     .footer-nav { display: flex; gap: 2rem; flex-wrap: nowrap; }
     .footer-nav a { font-size: 13.5px; font-weight: 400; color: rgba(255,255,255,0.75); white-space: nowrap; letter-spacing: 0.02em; transition: color 0.15s; }
     .footer-nav a:hover { color: var(--white); }
+    .partner-item { display: flex; flex-direction: column; align-items: center; gap: 0.35rem; text-decoration: none; }
     .partner-logo { width: 32px; height: 32px; border-radius: 50%; overflow: hidden; background: rgba(255,255,255,0.12); flex-shrink: 0; }
     .partner-logo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .partner-name { font-size: 10px; color: rgba(255,255,255,0.6); text-align: center; white-space: nowrap; }
 
     /* CONTACT MODAL */
     .contact-overlay { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(26,16,16,0.58); backdrop-filter: blur(4px); align-items: center; justify-content: center; padding: 1.5rem; }
@@ -312,6 +314,7 @@
         <span class="footer-logo-tagline">ქართული მეცნიერული ენის განვითარების პროექტი</span>
       </div>
     </a>
+    <div id="footer-partners" style="display:flex;gap:1.5rem;align-items:center;"></div>
     <nav class="footer-nav">
       <a href="#projects">თარგმანები</a>
       <a href="#events">ღონისძიებები</a>
@@ -362,7 +365,6 @@
   <div class="contact-modal">
     <button class="modal-close" onclick="closePartners()">✕</button>
     <h2>პარტნიორები</h2>
-    <p class="contact-intro">ჩვენი პარტნიორებია:</p>
     <div id="partners-modal-list"></div>
   </div>
 </div>
@@ -421,7 +423,8 @@ const books = {
     author: "Friedrich von Hayek",
     annotation: "",
     status: "მიმდინარე — 90% დასრულებულია.",
-    team: [{role:"მთარგმნელი",name:"მანანა ბოსტოღანაშვილი, მანანა მათიაშვილი, ანინა ტეფნაძე, ინოლა შუღლიაშვილი"},{role:"რედაქტორი",name:"სანდრო რაქვიაშვილი"}]
+    team: [{role:"მთარგმნელი",name:"მანანა ბოსტოღანაშვილი, მანანა მათიაშვილი, ანინა ტეფნაძე, ინოლა შუღლიაშვილი"},{role:"რედაქტორი",name:"სანდრო რაქვიაშვილი"}],
+    image: "Images/The Road to Serfdom.webp"
   },
   block: {
     title: "დაცვა ვერდასაცავისა",
@@ -573,13 +576,13 @@ const plannedBooks = [
   { title: "Antitrust and Monopoly: Anatomy of a Policy Failure", author: "Dominick T. Armentano", image: "Images/Antitrust and Monopoly.jpeg" },
   { title: "Economics in One Lesson", author: "Henry Hazlitt", image: "Images/Economics in One Lesson.png" },
   { title: "The Morality of Law", author: "Lon L. Fuller", image: "Images/The Morality of Law.jpeg" },
-  { title: "The Rise and Decline of the State", author: "Martin van Creveld" },
-  { title: "The Noblest Triumph: Property and Prosperity Through the Ages", author: "Tom Bethell" },
-  { title: "Bureaucracy", author: "Ludwig von Mises" },
-  { title: "On Violence", author: "Hannah Arendt" },
-  { title: "Freedom and the Law", author: "Bruno Leoni" },
-  { title: "Theory and History", author: "Ludwig von Mises" },
-  { title: "On Power: The Natural History of Its Growth", author: "Bertrand de Jouvenel" },
+  { title: "The Rise and Decline of the State", author: "Martin van Creveld", image: "Images/The Rise and Decline of the State.jpg" },
+  { title: "The Noblest Triumph: Property and Prosperity Through the Ages", author: "Tom Bethell", image: "Images/The Noblest Triumph.webp" },
+  { title: "Bureaucracy", author: "Ludwig von Mises", image: "Images/Bureaucracy.jpg" },
+  { title: "On Violence", author: "Hannah Arendt", image: "Images/On Violence.jpg" },
+  { title: "Freedom and the Law", author: "Bruno Leoni", image: "Images/Freedom and the Law.webp" },
+  { title: "Theory and History", author: "Ludwig von Mises", image: "Images/Theory and History.jpg" },
+  { title: "On Power: The Natural History of Its Growth", author: "Bertrand de Jouvenel", image: "Images/On Power The Natural History of Its Growth.webp" },
   { title: "The Anti-Capitalistic Mentality", author: "Ludwig von Mises" },
   { title: "The Methodology of Economics: Or, How Economists Explain", author: "Mark Blaug" },
   { title: "America's Great Depression", author: "Murray N. Rothbard" },
@@ -717,10 +720,10 @@ function renderEvents() {
 renderEvents();
 
 const partners = [
-  { num: 1, name: "საქართველოს უნივერსიტეტი", site: "www.ug.ge" }
+  { num: 1, name: "საქართველოს უნივერსიტეტი", site: "ug.edu.ge" }
 ];
 const partnerLogos = {
-  1: "Logos/PLogo_1.jpg"
+  1: "Logos/საქართველოს უნივერსიტეტი Logo.png"
 };
 function renderPartners() {
   const el = document.getElementById('footer-partners');
@@ -729,7 +732,10 @@ function renderPartners() {
     .filter(p => p.name)
     .map(p => {
       const href = p.site ? `https://${p.site.trim()}` : '#';
-      return `<a class="partner-logo" href="${href}" target="_blank"><img src="${partnerLogos[p.num]}" alt="${p.name}"/></a>`;
+      return `<a class="partner-item" href="${href}" target="_blank">
+        <div class="partner-logo"><img src="${partnerLogos[p.num]}" alt="${p.name}"/></div>
+        <span class="partner-name">${p.name}</span>
+      </a>`;
     }).join('');
 }
 renderPartners();
