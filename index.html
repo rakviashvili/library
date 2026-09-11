@@ -250,9 +250,9 @@
     </div>
     <div class="hero-right">
       <div class="stats-grid">
-        <div class="stat"><div class="stat-num">4</div><div class="stat-label">მიმდინარე</div></div>
+        <div class="stat"><div class="stat-num">5</div><div class="stat-label">მიმდინარე</div></div>
         <div class="stat"><div class="stat-num">3</div><div class="stat-label">დასრულებული</div></div>
-        <div class="stat"><div class="stat-num">45</div><div class="stat-label">დაგეგმილი</div></div>
+        <div class="stat"><div class="stat-num">44</div><div class="stat-label">დაგეგმილი</div></div>
         <div class="stat"><div class="stat-num">1</div><div class="stat-label">პარტნიორი</div></div>
       </div>
     </div>
@@ -417,6 +417,14 @@ const books = {
     team: [],
     image: "Images/Anarchy, State, and Utopia.jpg"
   },
+  arendt: {
+    title: "On Violence",
+    author: "Hannah Arendt",
+    annotation: "",
+    status: "მიმდინარე — 10% დასრულებულია.",
+    team: [],
+    image: "Images/On Violence.jpg"
+  },
   hayek: {
     title: "გზა ბატონყმობისკენ",
     author: "ფრიდრიხ ჰაიეკი",
@@ -443,7 +451,7 @@ const books = {
   }
 };
 
-const activeBookIds = ['leeson', 'oppenheimer', 'white', 'nozick'];
+const activeBookIds = ['leeson', 'oppenheimer', 'white', 'nozick', 'arendt'];
 
 function renderDoneBooks() {
   const coverColors = ['#D4C8E8','#C8D8E4','#E4D4C8','#C8E4D4'];
@@ -573,7 +581,6 @@ const plannedBooks = [
   { title: "The Rise and Decline of the State", author: "Martin van Creveld", image: "Images/The Rise and Decline of the State.jpg" },
   { title: "The Noblest Triumph: Property and Prosperity Through the Ages", author: "Tom Bethell", image: "Images/The Noblest Triumph.webp" },
   { title: "Bureaucracy", author: "Ludwig von Mises", image: "Images/Bureaucracy.jpg" },
-  { title: "On Violence", author: "Hannah Arendt", image: "Images/On Violence.jpg" },
   { title: "Freedom and the Law", author: "Bruno Leoni", image: "Images/Freedom and the Law.webp" },
   { title: "Theory and History", author: "Ludwig von Mises", image: "Images/Theory and History.jpg" },
   { title: "On Power: The Natural History of Its Growth", author: "Bertrand de Jouvenel", image: "Images/On Power The Natural History of Its Growth.webp" },
