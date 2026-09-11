@@ -251,8 +251,8 @@
     <div class="hero-right">
       <div class="stats-grid">
         <div class="stat"><div class="stat-num">5</div><div class="stat-label">მიმდინარე</div></div>
-        <div class="stat"><div class="stat-num">2</div><div class="stat-label">დასრულებული</div></div>
-        <div class="stat"><div class="stat-num">45</div><div class="stat-label">დაგეგმილი</div></div>
+        <div class="stat"><div class="stat-num">3</div><div class="stat-label">დასრულებული</div></div>
+        <div class="stat"><div class="stat-num">44</div><div class="stat-label">დაგეგმილი</div></div>
         <div class="stat"><div class="stat-num">1</div><div class="stat-label">პარტნიორი</div></div>
       </div>
     </div>
@@ -397,7 +397,7 @@ const books = {
     title: "The State",
     author: "Franz Oppenheimer",
     annotation: "ოპენჰეიმერი განასხვავებს ეკონომიკურ და პოლიტიკურ საშუალებებს სიმდიდრის მოპოვებისთვის და ამტკიცებს, რომ სახელმწიფო ძალდობრივი დაპყრობის შედეგია.",
-    status: "მიმდინარე — 2% დასრულებულია.",
+    status: "მიმდინარე — 75% დასრულებულია.",
     team: [{role:"მთარგმნელი",name:"ელენე კობახიძე"},{role:"რედაქტორი",name:"სანდრო რაქვიაშვილი"}],
     image: "Images/The State.jpeg"
   },
@@ -405,7 +405,7 @@ const books = {
     title: "Better Money",
     author: "Lawrence H. White",
     annotation: "",
-    status: "მიმდინარე.",
+    status: "მიმდინარე — 20% დასრულებულია.",
     team: [],
     image: "Images/Better Money.jpg"
   },
@@ -413,22 +413,30 @@ const books = {
     title: "Anarchy, State, and Utopia",
     author: "Robert Nozick",
     annotation: "",
-    status: "მიმდინარე.",
+    status: "მიმდინარე — 5% დასრულებულია.",
     team: [],
     image: "Images/Anarchy, State, and Utopia.jpg"
   },
-  hayek: {
-    title: "The Road to Serfdom",
-    author: "Friedrich von Hayek",
+  arendt: {
+    title: "On Violence",
+    author: "Hannah Arendt",
     annotation: "",
-    status: "მიმდინარე — 90% დასრულებულია.",
+    status: "მიმდინარე — 10% დასრულებულია.",
+    team: [],
+    image: "Images/On Violence.jpg"
+  },
+  hayek: {
+    title: "გზა ბატონყმობისკენ",
+    author: "ფრიდრიხ ჰაიეკი",
+    annotation: "გზა ბატონყმობისკენ ფ. ა. ჰაიეკის ყველაზე ცნობილი, მაგრამ არახელსაყრელ პირობებში შექმნილი წიგნია.",
+    status: "დასრულებულია.",
     team: [{role:"მთარგმნელი",name:"მანანა ბოსტოღანაშვილი, მანანა მათიაშვილი, ანინა ტეფნაძე, ინოლა შუღლიაშვილი"},{role:"რედაქტორი",name:"სანდრო რაქვიაშვილი"}],
     image: "Images/The Road to Serfdom.webp"
   },
   block: {
     title: "დაცვა ვერდასაცავისა",
     author: "უოლტერ ბლოკი",
-    annotation: "ეპატაჟურ ნაწარმოებში, რომელიც გამოიცა აშშ-ში 40 წლის წინ, პროფესორი უოლტერ ბლოკი ლიბერტარიანული ეთიკისა და მიუკერძოებელი ლოგიკის პოზიციებიდან იკვლევს საზოგადოების მიერ დევნილ ტიპაჟებს, რომელთა შორისაც არიან: სუტენიორი, მეძავი, ბარაკების მეპატრონე, შანტაჟისტი, მევახშე, ცილისმწამებელი, ნარკორეალიზატორი, სპეკულანტი, შუამავალი და სხვები. ანალიზის შედეგები აოცებს თავისი სითამამით და პარადოქსულობით.",
+    annotation: "ეპატაჟურ ნაწარმოებში, რომელიც გამოიცა აშშ-ში 40 წლის წინ, პროფესორი უოლტერ ბლოკი ლიბერტარიანული ეთიკისა და მიუკერძოებელი ლოგიკის პოზიციებიდან იკვლევს საზოგადოების მიერ დევნილი ტიპაჟებს, რომელთა შორისაც არიან: სუტენიორი, მეძავი, ბარაკების მეპატრონე, შანტაჟისტი, მევახშე, ცილისმწამებელი, ნარკორეალიზატორი, სპეკულანტი, შუამავალი და სხვები. ანალიზის შედეგები აოცებს თავისი სითამამით და პარადოქსულობით. დაცვა ვერდასაცავისა უდავოდ ინტელექტუალური გამოწვევაა ეკონომისტების, სოციოლოგების, პოლიტიკოსების, იურისტებისა და ფსიქოლოგებისათვის. წიგნი საინტერესოა ფართო მკითხველისთვისაც, რომლებსაც შეუძლიათ სტერეოტიპული აღქმის მოშორება და მიუკერძოებელი აზროვნების მოძრაობას გაყოლა.",
     status: "დასრულებულია. ხელმისაწვდომია გირჩის ოფისში.",
     team: [{role:"მთარგმნელი",name:"ანინა ტეფნაძე"},{role:"რედაქტორი",name:"ჰერმან საბო, სანდრო რაქვიაშვილი"}],
     image: "Images/დაცვა ვერდასაცავის.jpg"
@@ -443,7 +451,7 @@ const books = {
   }
 };
 
-const activeBookIds = ['leeson', 'oppenheimer', 'white', 'nozick', 'hayek'];
+const activeBookIds = ['leeson', 'oppenheimer', 'white', 'nozick', 'arendt'];
 
 function renderDoneBooks() {
   const coverColors = ['#D4C8E8','#C8D8E4','#E4D4C8','#C8E4D4'];
@@ -573,7 +581,6 @@ const plannedBooks = [
   { title: "The Rise and Decline of the State", author: "Martin van Creveld", image: "Images/The Rise and Decline of the State.jpg" },
   { title: "The Noblest Triumph: Property and Prosperity Through the Ages", author: "Tom Bethell", image: "Images/The Noblest Triumph.webp" },
   { title: "Bureaucracy", author: "Ludwig von Mises", image: "Images/Bureaucracy.jpg" },
-  { title: "On Violence", author: "Hannah Arendt", image: "Images/On Violence.jpg" },
   { title: "Freedom and the Law", author: "Bruno Leoni", image: "Images/Freedom and the Law.webp" },
   { title: "Theory and History", author: "Ludwig von Mises", image: "Images/Theory and History.jpg" },
   { title: "On Power: The Natural History of Its Growth", author: "Bertrand de Jouvenel", image: "Images/On Power The Natural History of Its Growth.webp" },
